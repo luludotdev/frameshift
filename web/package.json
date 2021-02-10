@@ -10,7 +10,9 @@
     "test": "yarn run lint"
   },
   "dependencies": {
+    "janus-ftl-player": "^0.0.3-alpha",
     "next": "10.0.6",
+    "next-transpile-modules": "^6.3.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
