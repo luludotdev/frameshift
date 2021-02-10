@@ -1,4 +1,6 @@
+import clsx from 'clsx'
 import { FC } from 'react'
+import { useDetectOBS } from '~hooks/useDetectOBS'
 import { useJanus } from '~hooks/useJanus'
 import { PlayerError } from './PlayerError'
 import { PlayerLoading } from './PlayerLoading'
@@ -10,9 +12,10 @@ interface IProps {
 
 const Player: FC<IProps> = ({ channelID, serverURI }) => {
   const { playing, error, ref, onLoaded } = useJanus(channelID, serverURI)
+  const isOBS = useDetectOBS()
 
   return (
-    <div className='container'>
+    <div className={clsx('container', isOBS && 'transparent')}>
       <style jsx>
         {`
           div.container
@@ -21,6 +24,9 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
             position relative
             overflow hidden
             background rgb(19, 19, 19)
+
+            &.transparent
+              background transparent
 
           video, div.overlay
             position absolute
