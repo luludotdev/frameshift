@@ -8,7 +8,20 @@ interface IProps {
 
 const Player: FC<IProps> = ({ channelID, serverURI }) => {
   const { ref, onLoaded } = useJanus(channelID, serverURI)
-  return <video ref={ref} onLoadedData={onLoaded} />
+  return (
+    <>
+      <style jsx>
+        {`
+          video
+            width 100%
+            height 100%
+            overflow hidden
+        `}
+      </style>
+
+      <video ref={ref} onLoadedData={onLoaded} />
+    </>
+  )
 }
 
 export default Player

@@ -14,7 +14,20 @@ interface IProps {
 const Live: NextPage<IProps> = ({ channelID, serverURI }) => {
   if (channelID === null) return <Error404 />
 
-  return <Player channelID={channelID} serverURI={serverURI ?? undefined} />
+  return (
+    <div>
+      <style jsx>
+        {`
+          div
+            width 100vw
+            height 100vh
+            overflow hidden
+        `}
+      </style>
+
+      <Player channelID={channelID} serverURI={serverURI ?? undefined} />
+    </div>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps<IProps> = async ({
