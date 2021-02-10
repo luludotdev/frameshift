@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { useJanus } from '~hooks/useJanus'
+import { PlayerLoading } from './PlayerLoading'
 
 interface IProps {
   channelID: number
@@ -31,7 +32,9 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
         `}
       </style>
 
-      <div className='overlay'>{/* TODO */}</div>
+      <div className='overlay'>
+        <PlayerLoading hidden={playing} />
+      </div>
 
       <video ref={ref} onLoadedData={onLoaded} />
     </div>
