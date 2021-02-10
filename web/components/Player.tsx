@@ -20,6 +20,7 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
             height 100%
             position relative
             overflow hidden
+            background rgb(19, 19, 19)
 
           video, div.overlay
             position absolute
