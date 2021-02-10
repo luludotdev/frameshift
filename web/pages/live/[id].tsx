@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import Error404 from '~pages/404'
 
 const Player = dynamic(async () => import('~components/Player'), {
   ssr: false,
@@ -11,7 +12,7 @@ interface IProps {
 }
 
 const Live: NextPage<IProps> = ({ channelID, serverURI }) => {
-  if (channelID === null) return <div>invalid</div>
+  if (channelID === null) return <Error404 />
 
   return <Player channelID={channelID} serverURI={serverURI ?? undefined} />
 }
