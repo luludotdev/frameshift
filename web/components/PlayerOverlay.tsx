@@ -16,7 +16,7 @@ export const PlayerOverlay: FC<IProps> = ({ children, hidden }) => (
           width 100%
           height 100%
 
-          background-color rgba(0, 0, 0, 0.65)
+          background-color rgb(19, 19, 19)
           color white
 
           display flex
@@ -24,6 +24,7 @@ export const PlayerOverlay: FC<IProps> = ({ children, hidden }) => (
           justify-content center
 
           transition 0.5s opacity ease
+          transition-delay 0.25s
       `}
     </style>
 
