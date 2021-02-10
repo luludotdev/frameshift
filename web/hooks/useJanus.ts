@@ -8,11 +8,27 @@ import {
 } from 'react'
 
 export class PlayerError extends Error {}
+export class AutoplayError extends PlayerError {}
 
 export const useJanus = (channelID: number, serverURI?: string) => {
   const [playing, setPlaying] = useState<boolean>(false)
   const [error, setError] = useState<PlayerError | null>(null)
   const ref = useRef<HTMLVideoElement | null>(null)
+
+  const play = useCallback(() => {
+    if (ref.current) {
+      setError(null)
+
+      ref.current
+        .play()
+        .then(() => {
+          setPlaying(true)
+        })
+        .catch(() => {
+          setError(new AutoplayError())
+        })
+    }
+  }, [ref])
 
   const onLoaded: ReactEventHandler<HTMLVideoElement> = useCallback(ev => {
     if (ev.target instanceof HTMLVideoElement) {
@@ -21,7 +37,9 @@ export const useJanus = (channelID: number, serverURI?: string) => {
         .then(() => {
           setPlaying(true)
         })
-        .catch(console.error)
+        .catch(() => {
+          setError(new AutoplayError())
+        })
     }
   }, [])
 
@@ -45,5 +63,5 @@ export const useJanus = (channelID: number, serverURI?: string) => {
     }
   }, [onUnhandled, channelID, serverURI])
 
-  return { playing, error, ref, onLoaded }
+  return { playing, error, ref, play, onLoaded }
 }

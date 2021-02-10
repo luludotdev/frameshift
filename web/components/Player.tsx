@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const Player: FC<IProps> = ({ channelID, serverURI }) => {
-  const { playing, error, ref, onLoaded } = useJanus(channelID, serverURI)
+  const { playing, error, ref, play, onLoaded } = useJanus(channelID, serverURI)
   const isOBS = useDetectOBS()
 
   return (
@@ -42,7 +42,7 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
 
       <div className='overlay'>
         <PlayerLoading hidden={playing || error !== null} />
-        <PlayerError error={error ?? undefined} />
+        <PlayerError error={error ?? undefined} play={play} />
       </div>
 
       <video ref={ref} onLoadedData={onLoaded} />

@@ -1,15 +1,20 @@
 import { FC } from 'react'
-import { PlayerError as Abc } from '~hooks/useJanus'
+import { AutoplayError, PlayerError as WrappedError } from '~hooks/useJanus'
 import { PlayerOverlay } from './PlayerOverlay'
+import { PlayerPlayPrompt } from './PlayerPlayPrompt'
 
 interface IProps {
-  error?: Abc
+  error?: WrappedError
+  play: () => void
 }
 
-export const PlayerError: FC<IProps> = ({ error }) => (
-  <PlayerOverlay hidden={error === undefined}>
-    <style jsx>
-      {`
+export const PlayerError: FC<IProps> = ({ error, play }) =>
+  error instanceof AutoplayError ? (
+    <PlayerPlayPrompt error={error} play={play} />
+  ) : (
+    <PlayerOverlay hidden={error === undefined}>
+      <style jsx>
+        {`
         div
           text-align center
 
@@ -21,11 +26,11 @@ export const PlayerError: FC<IProps> = ({ error }) => (
           margin 0
           font-size 1.5rem
       `}
-    </style>
+      </style>
 
-    <div>
-      <h1>Error</h1>
-      <p>{error?.message}</p>
-    </div>
-  </PlayerOverlay>
-)
+      <div>
+        <h1>Error</h1>
+        <p>{error?.message}</p>
+      </div>
+    </PlayerOverlay>
+  )
