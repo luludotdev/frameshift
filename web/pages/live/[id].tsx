@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 import Error404 from '~pages/404'
 
 const Player = dynamic(async () => import('~components/Player'), {
@@ -16,6 +17,10 @@ const Live: NextPage<IProps> = ({ channelID, serverURI }) => {
 
   return (
     <div>
+      <Head>
+        <title>FTL Player • {channelID}</title>
+      </Head>
+
       <style jsx>
         {`
           div

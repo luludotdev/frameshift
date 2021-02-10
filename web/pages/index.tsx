@@ -1,7 +1,12 @@
 import { NextPage } from 'next'
+import Head from 'next/head'
 
 const App: NextPage = () => (
   <div className='container'>
+    <Head>
+      <title>FTL Player</title>
+    </Head>
+
     <style jsx>
       {`
         div.container
