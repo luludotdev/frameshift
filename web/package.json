@@ -12,6 +12,7 @@
   "dependencies": {
     "janus-ftl-player": "^0.0.3-alpha",
     "next": "10.0.6",
+    "next-images": "^1.7.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "styled-jsx-plugin-stylus": "^0.0.4",
