@@ -37,6 +37,7 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
 
           div.overlay
             z-index 10
+            pointer-events none
         `}
       </style>
 
