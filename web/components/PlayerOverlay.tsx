@@ -32,6 +32,7 @@ export const PlayerOverlay: FC<IProps> = ({ children, hidden }) => (
       {`
         div
           opacity ${hidden ? 0 : 1}
+          pointer-events ${hidden ? 'none' : 'initial'}
       `}
     </style>
 
