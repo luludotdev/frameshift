@@ -3,6 +3,9 @@ on:
   push:
     paths-ignore:
       - 'web/**'
+      - 'README.md'
+      - 'LICENSE'
+      - 'docker-compose.yml'
 
 jobs:
   build:

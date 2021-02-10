@@ -3,6 +3,9 @@ on:
   push:
     paths-ignore:
       - 'janus-ftl-plugin/**'
+      - 'README.md'
+      - 'LICENSE'
+      - 'docker-compose.yml'
 
 jobs:
   build:
