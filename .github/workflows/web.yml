@@ -33,9 +33,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          key: web-${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-
+            web-${{ runner.os }}-buildx-
       - name: Build Docker Image
         working-directory: ./web
         run: |

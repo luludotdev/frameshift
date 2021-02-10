@@ -35,9 +35,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          key: server-${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-
+            server-${{ runner.os }}-buildx-
       - name: Build Docker Image
         working-directory: ./janus-ftl-plugin
         run: |
