@@ -10,6 +10,7 @@
     "test": "yarn run lint"
   },
   "dependencies": {
+    "clsx": "^1.1.1",
     "janus-ftl-player": "^0.0.3-alpha",
     "next": "10.0.6",
     "next-images": "^1.7.0",
