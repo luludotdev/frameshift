@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { useJanus } from '~hooks/useJanus'
+import { PlayerError } from './PlayerError'
 import { PlayerLoading } from './PlayerLoading'
 
 interface IProps {
@@ -8,7 +9,7 @@ interface IProps {
 }
 
 const Player: FC<IProps> = ({ channelID, serverURI }) => {
-  const { playing, ref, onLoaded } = useJanus(channelID, serverURI)
+  const { playing, error, ref, onLoaded } = useJanus(channelID, serverURI)
 
   return (
     <div className='container'>
@@ -33,7 +34,8 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
       </style>
 
       <div className='overlay'>
-        <PlayerLoading hidden={playing} />
+        <PlayerLoading hidden={playing || error !== null} />
+        <PlayerError error={error ?? undefined} />
       </div>
 
       <video ref={ref} onLoadedData={onLoaded} />
