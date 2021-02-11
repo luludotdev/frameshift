@@ -1,0 +1,23 @@
+name: Submodules Update
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Setup Git Profile
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: Update Submodules
+        run: git submodule update --recursive --remote
+      - name: Commit and Push
+        run: |
+          git diff --quiet && git diff --staged --quiet || git commit -am 'auto: update submodules'
+          git push
