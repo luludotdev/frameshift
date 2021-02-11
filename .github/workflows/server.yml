@@ -6,6 +6,7 @@ on:
       - 'README.md'
       - 'LICENSE'
       - 'docker-compose.yml'
+      - '.github/workflows/{web,submodules}.yml'
 
 jobs:
   build:
