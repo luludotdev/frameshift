@@ -16,7 +16,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
       - name: Update Submodules
-        run: git submodule foreach git pull
+        run: git submodule foreach git pull --ff-only
       - name: Commit and Push
         run: |
           git diff --quiet && git diff --staged --quiet || git commit -am 'auto: update submodules'
