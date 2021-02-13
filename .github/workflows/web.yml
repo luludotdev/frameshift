@@ -2,7 +2,7 @@ name: Web Docker Build
 on:
   push:
     paths-ignore:
-      - 'janus-ftl-plugin/**'
+      - 'ingest/**'
       - 'README.md'
       - 'LICENSE'
       - 'docker-compose.yml'
