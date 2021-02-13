@@ -1,3 +1,4 @@
 [submodule "janus-ftl-plugin"]
 	path = janus-ftl-plugin
 	url = https://github.com/Glimesh/janus-ftl-plugin
+	branch = master
