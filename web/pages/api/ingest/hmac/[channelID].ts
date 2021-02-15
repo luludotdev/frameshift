@@ -16,6 +16,11 @@ router.get((request, resp) => {
     resp.status(400).end()
   }
 
+  if (FTL_CLIENT_HMAC_SECRET === undefined) {
+    resp.status(500).end()
+    return
+  }
+
   const hash = createHmac(FTL_CLIENT_HMAC_ALGO, FTL_CLIENT_HMAC_SECRET)
   hash.update(channelID)
 
