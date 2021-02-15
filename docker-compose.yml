@@ -3,17 +3,37 @@ services:
   ingest:
     image: docker.pkg.github.com/nerdcubed/ftl/ftl-server
     restart: unless-stopped
+    networks:
+      - internal
     ports:
       - 8084:8084/tcp
       - 8088:8088/tcp
       - 9000-9100:9000-9100/udp
       - 20000-20100:20000-20100/udp
     environment:
+      - FTL_SERVICE_CONNECTION=REST
+      - FTL_SERVICE_REST_HOSTNAME=web
+      - FTL_SERVICE_REST_PORT=3000
+      - FTL_SERVICE_REST_HTTPS=0
+      - FTL_SERVICE_REST_PATH_BASE=/api/ingest
+      - FTL_SERVICE_REST_AUTH_TOKEN=secret_change_me
       - DOCKER_IP=<host ip>
   web:
     image: docker.pkg.github.com/nerdcubed/ftl/ftl-web
     restart: unless-stopped
+    networks:
+      - internal
     ports:
       - 3000:3000/tcp
     environment:
       - FTL_CLIENT_INGEST_SERVER=<ingest url>
+      - FTL_CLIENT_HMAC_SECRET=another_secret_change_me
+      - FTL_SERVICE_REST_AUTH_TOKEN=secret_change_me
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    networks:
+      - internal
+
+networks:
+  internal:
