@@ -11,4 +11,6 @@ export const IS_SERVER = typeof window === 'undefined'
 
 // #region Application
 export const FTL_CLIENT_INGEST_SERVER = registerString('FTL_CLIENT_INGEST_SERVER')
+export const FTL_CLIENT_HMAC_ALGO = registerString('FTL_CLIENT_HMAC_ALGO', false) ?? 'sha1'
+export const FTL_CLIENT_HMAC_SECRET = registerString('FTL_CLIENT_HMAC_SECRET', true)
 // #endregion
