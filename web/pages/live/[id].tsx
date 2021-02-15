@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
+import { FTL_CLIENT_INGEST_SERVER } from '~env'
 import Error404 from '~pages/404'
 
 const Player = dynamic(async () => import('~components/Player'), {
@@ -46,7 +47,6 @@ export const getServerSideProps: GetServerSideProps<IProps> = async ({
     ? query.serverURI[0]
     : query.serverURI!
 
-  const envServerURI = process.env.FTL_CLIENT_INGEST_SERVER
   const browserServerURI =
     queryServerURI === undefined
       ? null
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps<IProps> = async ({
       ? null
       : queryServerURI
 
-  const serverURI = envServerURI ?? browserServerURI
+  const serverURI = FTL_CLIENT_INGEST_SERVER ?? browserServerURI
   return { props: { channelID, serverURI } }
 }
 
