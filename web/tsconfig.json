@@ -23,7 +23,8 @@
       "~assets/*": ["assets/*"],
       "~components/*": ["components/*"],
       "~hooks/*": ["hooks/*"],
-      "~pages/*": ["pages/*"]
+      "~pages/*": ["pages/*"],
+      "~env": ["lib/env"]
     }
   },
   "include": [
