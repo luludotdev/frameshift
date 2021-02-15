@@ -22,9 +22,9 @@
     "paths": {
       "~assets/*": ["assets/*"],
       "~components/*": ["components/*"],
-      "~hooks/*": ["hooks/*"],
       "~pages/*": ["pages/*"],
       "~env": ["lib/env"],
+      "~hooks/*": ["lib/hooks/*"],
       "~middleware/*": ["lib/middleware/*"],
       "~redis": ["lib/redis"]
     }
