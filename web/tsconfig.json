@@ -24,7 +24,8 @@
       "~components/*": ["components/*"],
       "~hooks/*": ["hooks/*"],
       "~pages/*": ["pages/*"],
-      "~env": ["lib/env"]
+      "~env": ["lib/env"],
+      "~middleware/*": ["lib/middleware/*"]
     }
   },
   "include": [

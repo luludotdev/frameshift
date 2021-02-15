@@ -2,8 +2,10 @@ import { createHmac } from 'crypto'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
 import { FTL_CLIENT_HMAC_ALGO, FTL_CLIENT_HMAC_SECRET } from '~env'
+import { ingestAuth } from '~middleware/ingestAuth'
 
 const router = nc<NextApiRequest, NextApiResponse>()
+router.use(ingestAuth)
 
 router.get((request, resp) => {
   const channelID = Array.isArray(request.query.channelID)
