@@ -25,7 +25,8 @@
       "~hooks/*": ["hooks/*"],
       "~pages/*": ["pages/*"],
       "~env": ["lib/env"],
-      "~middleware/*": ["lib/middleware/*"]
+      "~middleware/*": ["lib/middleware/*"],
+      "~redis": ["lib/redis"]
     }
   },
   "include": [

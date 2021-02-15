@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { registerString } from './register'
+import { registerInt, registerString } from './register'
 
 // #region Globals
 const NODE_ENV = registerString('NODE_ENV')
@@ -17,4 +17,11 @@ export const FTL_CLIENT_HMAC_SECRET = registerString('FTL_CLIENT_HMAC_SECRET', t
 
 export const FTL_CLIENT_INGEST_AUTH = registerString('FTL_CLIENT_INGEST_AUTH')
 export const FTL_SERVICE_REST_AUTH_TOKEN = registerString('FTL_SERVICE_REST_AUTH_TOKEN')
+// #endregion
+
+// #region Redis
+export const FTL_CLIENT_REDIS_HOST = registerString('FTL_CLIENT_REDIS_HOST') ?? (IS_DEV ? 'localhost' : 'redis')
+export const FTL_CLIENT_REDIS_PORT = registerInt('FTL_CLIENT_REDIS_PORT') ?? 6379
+export const FTL_CLIENT_REDIS_PASS = registerString('FTL_CLIENT_REDIS_PASS')
+export const FTL_CLIENT_REDIS_DB_BASE = registerInt('FTL_CLIENT_REDIS_DB_BASE') ?? 0
 // #endregion
