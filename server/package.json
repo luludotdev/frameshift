@@ -13,7 +13,7 @@
     "clsx": "^1.1.1",
     "ioredis": "^4.22.0",
     "janus-ftl-player": "^0.0.3-alpha",
-    "next": "10.0.6",
+    "next": "10.0.7",
     "next-connect": "^0.10.0",
     "next-images": "^1.7.0",
     "node-cron": "^2.0.3",
@@ -24,13 +24,13 @@
   },
   "devDependencies": {
     "@types/ioredis": "^4.19.4",
-    "@types/node": "^14.14.25",
+    "@types/node": "^14.14.31",
     "@types/node-cron": "^2.0.3",
-    "@types/react": "^17.0.1",
-    "eslint-config-xo-react": "^0.23.0",
+    "@types/react": "^17.0.2",
+    "eslint-config-xo-react": "^0.24.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "typescript": "^4.1.4",
-    "xo": "^0.37.1"
+    "typescript": "^4.1.5",
+    "xo": "^0.38.1"
   }
 }
