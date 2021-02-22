@@ -2,7 +2,7 @@ name: Ingest Docker Build
 on:
   push:
     paths-ignore:
-      - 'web/**'
+      - 'server/**'
       - 'README.md'
       - 'LICENSE'
       - 'docker-compose.yml'
