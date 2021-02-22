@@ -1,0 +1,9 @@
+# This can be any (sub)domain pointing to your server
+ftl.example.com {
+	# Proxy Ingest Server API
+	reverse_proxy /janus :8088
+	reverse_proxy /janus/* :8088
+
+	# Proxy Web Client
+	reverse_proxy :3333
+}
