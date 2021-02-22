@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   ingest:
-    image: docker.pkg.github.com/nerdcubed/ftl/ftl-server
+    image: docker.pkg.github.com/lolpants/frameshift/ftl-server
     restart: unless-stopped
     networks:
       - internal
@@ -19,7 +19,7 @@ services:
       - FTL_SERVICE_REST_AUTH_TOKEN=secret_change_me
       - DOCKER_IP=<host ip>
   web:
-    image: docker.pkg.github.com/nerdcubed/ftl/ftl-web
+    image: docker.pkg.github.com/lolpants/frameshift/ftl-web
     restart: unless-stopped
     networks:
       - internal

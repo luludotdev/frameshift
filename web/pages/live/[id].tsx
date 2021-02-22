@@ -19,7 +19,7 @@ const Live: NextPage<IProps> = ({ channelID, serverURI }) => {
   return (
     <div>
       <Head>
-        <title>FTL Player • {channelID}</title>
+        <title>Frameshift • {channelID}</title>
       </Head>
 
       <style jsx>

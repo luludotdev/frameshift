@@ -4,7 +4,7 @@ import Head from 'next/head'
 const App: NextPage = () => (
   <div className='container'>
     <Head>
-      <title>FTL Player</title>
+      <title>Frameshift</title>
     </Head>
 
     <style jsx>
@@ -45,15 +45,15 @@ const App: NextPage = () => (
     </style>
 
     <div className='inner'>
-      <h1>FTL Player</h1>
+      <h1>Frameshift</h1>
       <hr />
 
       <h2>About</h2>
       <p>
-        FTL Player is a browser-based livestream player designed to be used with
+        Frameshift is a browser-based livestream player designed to be used with
         Mixer&apos;s FTL Protocol. See the{' '}
         <a
-          href='https://github.com/nerdcubed/ftl'
+          href='https://github.com/lolPants/frameshift'
           target='_blank'
           rel='noopener noreferrer'
         >
