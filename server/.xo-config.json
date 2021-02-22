@@ -1,5 +1,5 @@
 {
-  "extends": "xo-react",
+  "extends": ["xo-react"],
   "envs": ["es2020", "browser"],
 
   "space": true,
@@ -40,11 +40,14 @@
       }]
     }],
 
+    "node/file-extension-in-import": 0,
+
     "unicorn/filename-case": 0,
     "unicorn/no-reduce": 0,
     "unicorn/no-unreadable-array-destructuring": 0,
     "unicorn/no-process-exit": 0,
     "unicorn/no-abusive-eslint-disable": 0,
+    "unicorn/prevent-abbreviations": 0,
 
     "react/react-in-jsx-scope": 0,
     "react/prop-types": 0,

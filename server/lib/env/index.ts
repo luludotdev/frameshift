@@ -17,6 +17,13 @@ export const FTL_CLIENT_HMAC_SECRET = registerString('FTL_CLIENT_HMAC_SECRET')
 
 export const FTL_CLIENT_INGEST_AUTH = registerString('FTL_CLIENT_INGEST_AUTH')
 export const FTL_SERVICE_REST_AUTH_TOKEN = registerString('FTL_SERVICE_REST_AUTH_TOKEN')
+
+const channelIdRX = /[, ]/
+const channelIdWhitelist = registerString('FTL_CLIENT_CHANNELID_WHITELIST')
+const channelIdBlacklist = registerString('FTL_CLIENT_CHANNELID_BLACKLIST')
+
+export const FTL_CLIENT_CHANNELID_WHITELIST = channelIdWhitelist?.split(channelIdRX) ?? []
+export const FTL_CLIENT_CHANNELID_BLACKLIST = channelIdBlacklist?.split(channelIdRX) ?? []
 // #endregion
 
 // #region Redis
