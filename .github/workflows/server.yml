@@ -2,11 +2,11 @@ name: Server Docker Build
 on:
   push:
     paths-ignore:
-      - 'web/**'
+      - 'ingest/**'
       - 'README.md'
       - 'LICENSE'
       - 'docker-compose.yml'
-      - '.github/workflows/{web,submodules}.yml'
+      - '.github/workflows/{ingest,submodules}.yml'
 
 jobs:
   build:
@@ -14,12 +14,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
       - name: Prepare
         id: prepare
         run: |
-          IMAGE_NAME=ftl-server
+          IMAGE_NAME=frameshift-server
 
           DOCKER_USER=`echo ${{ github.repository }} | cut -d "/" -f 1 | tr '[:upper:]' '[:lower:]'`
           DOCKER_REPO=`echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'`
@@ -43,7 +41,7 @@ jobs:
           restore-keys: |
             server-${{ runner.os }}-buildx-
       - name: Build Docker Image
-        working-directory: ./ingest
+        working-directory: ./server
         run: |
           docker buildx build \
             --cache-from "type=local,src=/tmp/.buildx-cache" \

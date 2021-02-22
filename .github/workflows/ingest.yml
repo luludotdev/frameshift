@@ -1,8 +1,8 @@
-name: Web Docker Build
+name: Ingest Docker Build
 on:
   push:
     paths-ignore:
-      - 'ingest/**'
+      - 'web/**'
       - 'README.md'
       - 'LICENSE'
       - 'docker-compose.yml'
@@ -14,10 +14,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Prepare
         id: prepare
         run: |
-          IMAGE_NAME=ftl-web
+          IMAGE_NAME=frameshift-ingest
 
           DOCKER_USER=`echo ${{ github.repository }} | cut -d "/" -f 1 | tr '[:upper:]' '[:lower:]'`
           DOCKER_REPO=`echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'`
@@ -37,11 +39,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: web-${{ runner.os }}-buildx-${{ github.sha }}
+          key: ingest-${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-            web-${{ runner.os }}-buildx-
+            ingest-${{ runner.os }}-buildx-
       - name: Build Docker Image
-        working-directory: ./web
+        working-directory: ./ingest
         run: |
           docker buildx build \
             --cache-from "type=local,src=/tmp/.buildx-cache" \
