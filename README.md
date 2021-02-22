@@ -9,7 +9,7 @@ By using Mixer's FTL protocol for ingest and WebRTC for display, we can achieve 
 ## ❓ Usage
 The Frameshift stack is deployed using [Docker](https://docs.docker.com/get-started/overview/), as such you are expected to have a good working knowledge of both Docker and [Docker Compose](https://docs.docker.com/compose/). It can also be deployed using [Kubernetes](https://k8s.io), but no samples are provided for that.
 
-Both [web client](https://github.com/lolPants/frameshift/packages/617209) and [ingest server](https://github.com/lolPants/frameshift/packages/617214) are available as Docker Images. A sample [Docker Compose file](https://github.com/lolPants/frameshift/blob/master/docker-compose.yml) has been provided to help you get started. **Please note that this is just an example, and not intended to be used verbatim.**
+Both [web client](https://github.com/lolPants/frameshift/packages/633173) and [ingest server](https://github.com/lolPants/frameshift/packages/633178) are available as Docker Images. A sample [Docker Compose file](https://github.com/lolPants/frameshift/blob/master/docker-compose.yml) has been provided to help you get started. **Please note that this is just an example, and not intended to be used verbatim.**
 
 You are expected to reverse proxy both the ingest server and the web client to the same hostname. A sample [Caddyfile](https://github.com/lolPants/frameshift/blob/master/Caddyfile) has been provided to show what needs proxying and where. In addition to this you will need to open the required ports that aren't being proxied via HTTP, as these are used for ingest and playback.
 
