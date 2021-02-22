@@ -13,6 +13,7 @@ router.post(async (request, resp) => {
 
   if (Number.isNaN(Number.parseInt(channelID, 10))) {
     resp.status(400).end()
+    return
   }
 
   const p = redis.pipeline()

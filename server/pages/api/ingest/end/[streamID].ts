@@ -13,6 +13,7 @@ router.post(async (request, resp) => {
 
   if (Number.isNaN(Number.parseInt(streamID, 10))) {
     resp.status(400).end()
+    return
   }
 
   await redis.del(`ftl:${streamID}`)

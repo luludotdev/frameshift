@@ -14,6 +14,7 @@ router.get((request, resp) => {
 
   if (Number.isNaN(Number.parseInt(channelID, 10))) {
     resp.status(400).end()
+    return
   }
 
   if (FTL_CLIENT_HMAC_SECRET === undefined) {

@@ -11,6 +11,7 @@ router.get(async (request, resp) => {
 
   if (Number.isNaN(Number.parseInt(streamID, 10))) {
     resp.status(400).end()
+    return
   }
 
   const stream = await redis.hgetall(`ftl:${streamID}`)
