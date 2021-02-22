@@ -18,8 +18,10 @@ services:
       - FTL_SERVICE_REST_PORT=3000
       - FTL_SERVICE_REST_HTTPS=0
       - FTL_SERVICE_REST_PATH_BASE=/api/ingest
+
       # This should match the public IP of your host machine
       - DOCKER_IP=<host ip>
+
       # This should be set to a long, cryptographically
       # secure random string.
       - FTL_SERVICE_REST_AUTH_TOKEN=secret_change_me
@@ -33,16 +35,24 @@ services:
     environment:
       # This should match the env var set above
       - FTL_SERVICE_REST_AUTH_TOKEN=secret_change_me
+
       # This should point towards the proxied ingest
       # server API.
       # eg: https://ftl.example.com/janus
       - FTL_CLIENT_INGEST_SERVER=<ingest url>
+
       # Controls how the HMAC portion of a stream key is
       # calculated. The channel ID is used as the input.
       # Algorithm is set to sha1 by default and can use
       # any algorithm supported by your version of OpenSSL.
       - FTL_CLIENT_HMAC_SECRET=another_secret_change_me
       # - FTL_CLIENT_HMAC_ALGO=sha1
+
+      # Channel ID [black|white]lists. Blacklist is checked
+      # first. Leave eiher unset to disable specific lists,
+      # leave both unset to allow any IDs.
+      # - FTL_CLIENT_CHANNELID_WHITELIST=
+      # - FTL_CLIENT_CHANNELID_BLACKLIST=
   redis:
     image: redis:alpine
     restart: unless-stopped
