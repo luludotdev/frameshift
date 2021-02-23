@@ -12,7 +12,7 @@
   "dependencies": {
     "clsx": "^1.1.1",
     "ioredis": "^4.22.0",
-    "janus-ftl-player": "^0.0.3-alpha",
+    "janus-ftl-player": "^0.0.5-alpha",
     "next": "10.0.7",
     "next-connect": "^0.10.0",
     "next-images": "^1.7.0",
