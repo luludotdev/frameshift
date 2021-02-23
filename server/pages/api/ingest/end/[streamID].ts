@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
 import { ingestAuth } from '~middleware/ingestAuth'
-import { redis, dataKey } from '~redis'
+import { redis, dataKey, previewKey } from '~redis'
 
 const router = nc<NextApiRequest, NextApiResponse>()
 router.use(ingestAuth)
@@ -16,7 +16,7 @@ router.post(async (request, resp) => {
     return
   }
 
-  await redis.del(dataKey(streamID))
+  await redis.del(dataKey(streamID), previewKey(streamID))
   resp.status(200).end()
 })
 

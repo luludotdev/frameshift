@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { registerInt, registerString } from './register'
+import { registerBool, registerInt, registerString } from './register'
 
 // #region Globals
 const NODE_ENV = registerString('NODE_ENV')
@@ -24,6 +24,8 @@ const channelIdBlacklist = registerString('FTL_CLIENT_CHANNELID_BLACKLIST')
 
 export const FTL_CLIENT_CHANNELID_WHITELIST = channelIdWhitelist?.split(channelIdRX) ?? []
 export const FTL_CLIENT_CHANNELID_BLACKLIST = channelIdBlacklist?.split(channelIdRX) ?? []
+
+export const FTL_CLIENT_DISABLE_THUMBNAILS = registerBool('FTL_CLIENT_DISABLE_THUMBNAILS') ?? false
 // #endregion
 
 // #region Redis
