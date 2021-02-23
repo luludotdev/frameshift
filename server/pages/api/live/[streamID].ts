@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
-import { redis, dataKey } from '~redis'
+import { dataKey, redis } from '~redis'
 
 const router = nc<NextApiRequest, NextApiResponse>()
 

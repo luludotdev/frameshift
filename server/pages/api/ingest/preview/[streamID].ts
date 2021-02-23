@@ -1,6 +1,6 @@
+import multer from 'multer'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
-import multer from 'multer'
 import { FTL_CLIENT_DISABLE_THUMBNAILS } from '~env'
 import { ingestAuth } from '~middleware/ingestAuth'
 import { previewKey, PreviewKeyField, redis } from '~redis'
@@ -12,7 +12,7 @@ interface ApiRequest extends NextApiRequest {
 const router = nc<ApiRequest, NextApiResponse>()
 router.use(ingestAuth)
 
-if (FTL_CLIENT_DISABLE_THUMBNAILS == false) {
+if (FTL_CLIENT_DISABLE_THUMBNAILS === false) {
   const middleware = multer({ storage: multer.memoryStorage() })
   router.use(middleware.single('thumbdata'))
 }

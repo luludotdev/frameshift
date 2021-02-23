@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
 import { ingestAuth } from '~middleware/ingestAuth'
-import { redis, dataKey, previewKey } from '~redis'
+import { dataKey, previewKey, redis } from '~redis'
 
 const router = nc<NextApiRequest, NextApiResponse>()
 router.use(ingestAuth)

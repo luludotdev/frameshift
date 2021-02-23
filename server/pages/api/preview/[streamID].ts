@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
 import { FTL_CLIENT_DISABLE_THUMBNAILS } from '~env'
-import { redis, previewKey, PreviewKeyField } from '~redis'
+import { previewKey, PreviewKeyField, redis } from '~redis'
 
 const router = nc<NextApiRequest, NextApiResponse>()
 
