@@ -5,7 +5,7 @@ import {
   FTL_CLIENT_CHANNELID_WHITELIST as whitelist,
 } from '~env'
 import { ingestAuth } from '~middleware/ingestAuth'
-import { redis } from '~redis'
+import { dataKey, redis } from '~redis'
 
 const router = nc<NextApiRequest, NextApiResponse>()
 router.use(ingestAuth)
@@ -33,8 +33,10 @@ router.post(async (request, resp) => {
   }
 
   const p = redis.pipeline()
-  p.hset(`ftl:${channelID}`, 'channelID', channelID)
-  p.expire(`ftl:${channelID}`, 10)
+  const key = dataKey(channelID)
+
+  p.hset(key, 'channelID', channelID)
+  p.expire(key, 10)
   await p.exec()
 
   resp.json({ streamId: channelID })

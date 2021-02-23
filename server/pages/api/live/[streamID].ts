@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
-import { redis } from '~redis'
+import { redis, dataKey } from '~redis'
 
 const router = nc<NextApiRequest, NextApiResponse>()
 
@@ -14,7 +14,7 @@ router.get(async (request, resp) => {
     return
   }
 
-  const stream = await redis.hgetall(`ftl:${streamID}`)
+  const stream = await redis.hgetall(dataKey(streamID))
   if (Object.keys(stream).length === 0) {
     resp.status(404).end()
     return
