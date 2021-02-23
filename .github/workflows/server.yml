@@ -2,6 +2,7 @@ name: Server Docker Build
 on:
   push:
     paths-ignore:
+      - 'ingest'
       - 'ingest/**'
       - 'README.md'
       - 'LICENSE'
