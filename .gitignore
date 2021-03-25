@@ -1,0 +1,7 @@
+# Logfiles
+*.log
+
+# IDE Foldes
+.idea
+.vs
+.vscode
