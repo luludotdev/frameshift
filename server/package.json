@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "clsx": "^1.1.1",
-    "ioredis": "^4.24.4",
-    "janus-ftl-player": "^0.0.5-alpha",
+    "ioredis": "^4.24.6",
+    "janus-ftl-player": "0.0.8-alpha",
     "multer": "^1.4.2",
-    "next": "10.0.9",
+    "next": "10.1.2",
     "next-connect": "^0.10.1",
     "next-images": "^1.7.0",
     "node-cron": "^3.0.0",
@@ -24,9 +24,9 @@
     "stylus": "^0.54.8"
   },
   "devDependencies": {
-    "@types/ioredis": "^4.22.1",
+    "@types/ioredis": "^4.22.2",
     "@types/multer": "^1.4.5",
-    "@types/node": "^14.14.35",
+    "@types/node": "^14.14.37",
     "@types/node-cron": "^2.0.3",
     "@types/react": "^17.0.3",
     "eslint-config-xo-react": "^0.24.0",
