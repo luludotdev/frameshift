@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "clsx": "^1.1.1",
+    "date-format": "^3.0.0",
     "ioredis": "^4.24.6",
     "janus-ftl-player": "0.0.8-alpha",
     "multer": "^1.4.2",
@@ -26,7 +27,8 @@
     "styled-jsx-plugin-stylus": "^0.0.4",
     "stylus": "^0.54.8",
     "swr": "^0.5.5",
-    "type-fest": "^1.0.1"
+    "type-fest": "^1.0.1",
+    "use-animation-frame": "^0.1.0"
   },
   "devDependencies": {
     "@types/ioredis": "^4.22.2",
