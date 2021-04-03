@@ -1,8 +1,9 @@
 import type { FC } from 'react'
+import type { Except } from 'type-fest'
 import { PlayerOverlay } from './PlayerOverlay'
 import type { IProps } from './PlayerOverlay'
 
-export const PlayerControls: FC<Omit<IProps, 'transparent'>> = ({
+export const PlayerControls: FC<Except<IProps, 'transparent'>> = ({
   ...props
 }) => (
   <PlayerOverlay transparent {...props}>
