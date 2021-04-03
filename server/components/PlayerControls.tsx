@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import type { FC } from 'react'
 import type { Except } from 'type-fest'
+import { Fullscreen } from './controls/Fullscreen'
 import { Uptime } from './controls/Uptime'
 import { Viewers } from './controls/Viewers'
 import { Volume } from './controls/Volume'
@@ -8,13 +9,18 @@ import { PlayerOverlay } from './PlayerOverlay'
 import type { IProps } from './PlayerOverlay'
 
 interface ILocalProps {
+  isFullscreen: boolean
+
   onVolumeChanged: (volume: number) => void
+  onFullscreenClicked: () => void
 }
 
 type Props = Except<IProps, 'transparent' | 'fadeDelay' | 'fadeTime'>
 export const PlayerControls: FC<Props & ILocalProps> = ({
   hidden,
+  isFullscreen,
   onVolumeChanged,
+  onFullscreenClicked,
 }) => {
   const [hover, setHover] = useState<boolean>(false)
   const onHoverOver = useCallback(() => setHover(true), [])
@@ -88,6 +94,10 @@ export const PlayerControls: FC<Props & ILocalProps> = ({
 
           <Viewers />
           <Uptime />
+          <Fullscreen
+            isFullscreen={isFullscreen}
+            onClick={onFullscreenClicked}
+          />
         </div>
       </div>
     </PlayerOverlay>

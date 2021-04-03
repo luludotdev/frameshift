@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import type { FC } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import { useDetectOBS } from '~hooks/useDetectOBS'
@@ -39,6 +39,34 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
     },
     [ref]
   )
+
+  const [isFullscreen, setFullscreen] = useState<boolean>(false)
+  const onFullscreenClicked = useCallback(() => {
+    if (!ref.current) return
+
+    if (isFullscreen) {
+      void document.exitFullscreen()
+    } else {
+      void ref.current.parentElement?.requestFullscreen()
+    }
+  }, [isFullscreen, ref])
+
+  useEffect(() => {
+    const onChanged = (ev: Event) => {
+      setFullscreen(document.fullscreenElement === ev.target)
+    }
+
+    const parent = ref.current?.parentElement
+    if (parent) {
+      parent.addEventListener('fullscreenchange', onChanged)
+    }
+
+    return () => {
+      if (parent) {
+        parent.removeEventListener('fullscreenchange', onChanged)
+      }
+    }
+  }, [ref])
 
   return (
     <div
@@ -83,7 +111,9 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
         {!isOBS && (
           <PlayerControls
             hidden={atRest || !hover}
+            isFullscreen={isFullscreen}
             onVolumeChanged={onVolumeChanged}
+            onFullscreenClicked={onFullscreenClicked}
           />
         )}
       </div>

@@ -1,6 +1,8 @@
 import { config, library } from '@fortawesome/fontawesome-svg-core'
 import {
   faClock,
+  faCompress,
+  faExpand,
   faUser,
   faVolumeDown,
   faVolumeMute,
@@ -13,6 +15,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 library.add(
   faClock,
+  faCompress,
+  faExpand,
   faUser,
   faVolumeDown,
   faVolumeMute,
