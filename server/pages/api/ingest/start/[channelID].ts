@@ -32,10 +32,12 @@ router.post(async (request, resp) => {
     return
   }
 
+  const now = Date.now()
   const p = redis.pipeline()
   const key = dataKey(channelID)
 
   p.hset(key, 'channelID', channelID)
+  p.hset(key, 'startTime', now.toFixed(0))
   p.expire(key, 10)
   await p.exec()
 
