@@ -8,20 +8,8 @@ import { Volume } from './controls/Volume'
 import { PlayerOverlay } from './PlayerOverlay'
 import type { IProps } from './PlayerOverlay'
 
-interface ILocalProps {
-  isFullscreen: boolean
-
-  onVolumeChanged: (volume: number) => void
-  onFullscreenClicked: () => void
-}
-
 type Props = Except<IProps, 'transparent' | 'fadeDelay' | 'fadeTime'>
-export const PlayerControls: FC<Props & ILocalProps> = ({
-  hidden,
-  isFullscreen,
-  onVolumeChanged,
-  onFullscreenClicked,
-}) => {
+export const PlayerControls: FC<Props> = ({ hidden }) => {
   const [hover, setHover] = useState<boolean>(false)
   const onHoverOver = useCallback(() => setHover(true), [])
   const onHoverOut = useCallback(() => setHover(false), [])
@@ -88,15 +76,12 @@ export const PlayerControls: FC<Props & ILocalProps> = ({
         onMouseOut={onHoverOut}
       >
         <div className='bar'>
-          <Volume onChanged={onVolumeChanged} />
+          <Volume />
           <div className='spacer' />
 
           <Viewers />
           <Uptime />
-          <Fullscreen
-            isFullscreen={isFullscreen}
-            onClick={onFullscreenClicked}
-          />
+          <Fullscreen />
         </div>
       </div>
     </PlayerOverlay>

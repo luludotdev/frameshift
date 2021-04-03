@@ -1,15 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { ChangeEvent, FC } from 'react'
+import { useContext } from '~hooks/useContext'
 import { ControlIcon } from './ControlIcon'
 import type { Icon } from './ControlIcon'
 
 enum StorageKey {
   Volume = '@@frameshift/volume',
   OldVolume = '@@frameshift/old-volume',
-}
-
-interface IProps {
-  onChanged: (volume: number) => void
 }
 
 const volumeIcon: (volume: number) => Icon = volume => {
@@ -20,9 +17,19 @@ const volumeIcon: (volume: number) => Icon = volume => {
   return 'volume-up'
 }
 
-export const Volume: FC<IProps> = ({ onChanged: cb }) => {
+export const Volume: FC = () => {
+  const { videoRef: ref } = useContext()
   const [volume, setVolume] = useState<number>(1)
   const [oldVolume, setOldVolume] = useState<number>(1)
+
+  const onVolumeChange = useCallback(
+    (volume: number) => {
+      if (ref.current) {
+        ref.current.volume = volume
+      }
+    },
+    [ref]
+  )
 
   const handleChanged = useCallback(
     (vol: number, muting: boolean) => {
@@ -34,9 +41,9 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
         localStorage.setItem(StorageKey.OldVolume, vol.toFixed(2))
       }
 
-      if (typeof cb === 'function') cb(vol)
+      onVolumeChange(vol)
     },
-    [setVolume, cb]
+    [setVolume, onVolumeChange]
   )
 
   const onChanged = useCallback(
@@ -59,7 +66,7 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
 
     const vol = Number.isNaN(storedVolume) ? 1 : storedVolume
     setVolume(vol)
-    if (typeof cb === 'function') cb(vol)
+    if (typeof onVolumeChange === 'function') onVolumeChange(vol)
 
     const storedOldVolume = Number.parseFloat(
       localStorage.getItem(StorageKey.OldVolume) ?? vol.toString()
@@ -67,7 +74,7 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
 
     const oldVol = Number.isNaN(storedOldVolume) ? vol : storedOldVolume
     setOldVolume(oldVol)
-  }, [setVolume, setOldVolume, cb])
+  }, [setVolume, setOldVolume, onVolumeChange])
 
   const colorA = 'white'
   const colorB = 'rgba(255, 255, 255, 0.2)'

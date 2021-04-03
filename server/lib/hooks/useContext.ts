@@ -1,8 +1,11 @@
 import { createContext, useContext } from 'react'
+import type { MutableRefObject } from 'react'
 
 interface IContext {
   channelID: number
   serverURI: string | undefined
+
+  videoRef: MutableRefObject<HTMLVideoElement | null>
 }
 
 // @ts-expect-error

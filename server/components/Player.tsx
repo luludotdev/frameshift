@@ -32,45 +32,8 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
     debouncedMouseMove(true)
   }, [setAtRest, debouncedMouseMove])
 
-  const onVolumeChanged = useCallback(
-    (volume: number) => {
-      if (ref.current) {
-        ref.current.volume = volume
-      }
-    },
-    [ref]
-  )
-
-  const [isFullscreen, setFullscreen] = useState<boolean>(false)
-  const onFullscreenClicked = useCallback(() => {
-    if (!ref.current) return
-
-    if (isFullscreen) {
-      void document.exitFullscreen()
-    } else {
-      void ref.current.parentElement?.requestFullscreen()
-    }
-  }, [isFullscreen, ref])
-
-  useEffect(() => {
-    const onChanged = (ev: Event) => {
-      setFullscreen(document.fullscreenElement === ev.target)
-    }
-
-    const parent = ref.current?.parentElement
-    if (parent) {
-      parent.addEventListener('fullscreenchange', onChanged)
-    }
-
-    return () => {
-      if (parent) {
-        parent.removeEventListener('fullscreenchange', onChanged)
-      }
-    }
-  }, [ref])
-
   return (
-    <Provider value={{ channelID, serverURI }}>
+    <Provider value={{ channelID, serverURI, videoRef: ref }}>
       <div
         className={clsx('container', isOBS && 'transparent')}
         onMouseMove={onMouseMove}
@@ -110,14 +73,7 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
         <div className='overlay'>
           <PlayerLoading hidden={playing || error !== null} />
           <PlayerError error={error ?? undefined} play={play} />
-          {!isOBS && (
-            <PlayerControls
-              hidden={atRest || !hover}
-              isFullscreen={isFullscreen}
-              onVolumeChanged={onVolumeChanged}
-              onFullscreenClicked={onFullscreenClicked}
-            />
-          )}
+          {!isOBS && <PlayerControls hidden={atRest || !hover} />}
         </div>
 
         <video
