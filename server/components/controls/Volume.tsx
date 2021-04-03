@@ -120,15 +120,19 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
               outline none
               box-shadow none
 
-            $thumb
+            thumb()
               appearance none
               background white
               width $thumb-size
               height $thumb-size
               border-radius 50%
 
+            &::-moz-range-thumb
+              thumb()
+              border 0
+
             &::-webkit-slider-thumb
-              @extends $thumb
+              thumb()
         `}
       </style>
 
