@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useEffect, useState } from 'react'
 import type { ChangeEvent, FC } from 'react'
-import type { Icon } from './ControlValue'
+import { ControlIcon } from './ControlIcon'
+import type { Icon } from './ControlIcon'
 
 enum StorageKey {
   Volume = '@@frameshift/volume',
@@ -73,23 +73,17 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
     <div>
       <style jsx>
         {`
-          div.icon
-            cursor pointer
-            display inline-block
-            width 1.125em
-
           input[type=range]
             margin-left .5rem
         `}
       </style>
 
-      <div
-        className='icon'
+      <ControlIcon
+        icon={volumeIcon(volume)}
         title={volume === 0 ? 'Unmute' : 'Mute'}
+        style={{ width: '1.125em' }}
         onClick={handleMute}
-      >
-        <FontAwesomeIcon icon={volumeIcon(volume)} />
-      </div>
+      />
 
       <input
         type='range'

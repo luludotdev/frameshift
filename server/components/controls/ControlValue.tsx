@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
 import type { FC } from 'react'
-
-export type Icon = FontAwesomeIconProps['icon']
+import { ControlIcon } from './ControlIcon'
+import type { Icon } from './ControlIcon'
 
 interface IProps {
   title: string
@@ -19,6 +17,6 @@ export const ControlValue: FC<IProps> = ({ children, title, icon }) => (
     </style>
 
     <span>{children}</span>
-    <FontAwesomeIcon icon={icon} />
+    <ControlIcon icon={icon} />
   </div>
 )
