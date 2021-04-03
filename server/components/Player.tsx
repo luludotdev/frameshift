@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { useCallback, useState } from 'react'
 import type { FC } from 'react'
+import { useDebouncedCallback } from 'use-debounce'
 import { useDetectOBS } from '~hooks/useDetectOBS'
 import { useJanus } from '~hooks/useJanus'
 import { PlayerControls } from './PlayerControls'
@@ -20,6 +21,16 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
   const onHoverOver = useCallback(() => setHover(true), [])
   const onHoverOut = useCallback(() => setHover(false), [])
 
+  const [atRest, setAtRest] = useState<boolean>(true)
+  const debouncedMouseMove = useDebouncedCallback((value: boolean) => {
+    setAtRest(value)
+  }, 2500)
+
+  const onMouseMove = useCallback(() => {
+    setAtRest(false)
+    debouncedMouseMove(true)
+  }, [setAtRest, debouncedMouseMove])
+
   const onVolumeChanged = useCallback(
     (volume: number) => {
       if (ref.current) {
@@ -30,7 +41,10 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
   )
 
   return (
-    <div className={clsx('container', isOBS && 'transparent')}>
+    <div
+      className={clsx('container', isOBS && 'transparent')}
+      onMouseMove={onMouseMove}
+    >
       <style jsx>
         {`
           div.container
@@ -56,11 +70,21 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
         `}
       </style>
 
+      <style jsx>
+        {`
+          div.container
+            cursor ${atRest ? 'none' : 'initial'}
+        `}
+      </style>
+
       <div className='overlay'>
         <PlayerLoading hidden={playing || error !== null} />
         <PlayerError error={error ?? undefined} play={play} />
         {!isOBS && (
-          <PlayerControls hidden={!hover} onVolumeChanged={onVolumeChanged} />
+          <PlayerControls
+            hidden={atRest || !hover}
+            onVolumeChanged={onVolumeChanged}
+          />
         )}
       </div>
 

@@ -5638,6 +5638,11 @@ use-animation-frame@^0.1.0:
   resolved "https://registry.yarnpkg.com/use-animation-frame/-/use-animation-frame-0.1.0.tgz#1dc235ab7d7d340ec99b1c45f8f2143a5b78331b"
   integrity sha512-vRdNzrphRaBOeq/pHSFWY3s6aoPELF3Zq92rSbm+Tj5qdKBtemfsQfYCLWAp4dnQ/3crpBD6iEAQ6IG2w8Q8Ww==
 
+use-debounce@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-6.0.0.tgz#972300f9660ddd8fd12fa7cb78a17e0290a6a2c5"
+  integrity sha512-d4Sy6j8J0kkPXqIUGvIf829HCtyErxG8NMoFOJAvYSZP4Xuar7PURNt9LkvkGYoQw7i4iuez1jo957TL4m772g==
+
 use-subscription@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.5.1.tgz#73501107f02fad84c6dd57965beb0b75c68c42d1"

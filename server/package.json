@@ -28,7 +28,8 @@
     "stylus": "^0.54.8",
     "swr": "^0.5.5",
     "type-fest": "^1.0.1",
-    "use-animation-frame": "^0.1.0"
+    "use-animation-frame": "^0.1.0",
+    "use-debounce": "^6.0.0"
   },
   "devDependencies": {
     "@types/ioredis": "^4.22.2",
