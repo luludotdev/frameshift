@@ -20,7 +20,14 @@ router.get(async (request, resp) => {
     return
   }
 
-  resp.json(stream)
+  resp.json(sortObject(stream))
 })
+
+function sortObject<T>(obj: Record<string, T>): Record<string, T> {
+  const entries: Array<[string, T]> = Object.entries(obj)
+  entries.sort((a, b) => a[0].localeCompare(b[0]))
+
+  return Object.fromEntries(entries)
+}
 
 export default router
