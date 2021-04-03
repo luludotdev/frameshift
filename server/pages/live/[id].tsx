@@ -54,7 +54,9 @@ export const getServerSideProps: GetServerSideProps<IProps> = async ({
       ? null
       : queryServerURI
 
-  const serverURI = FTL_CLIENT_INGEST_SERVER ?? browserServerURI
+  const serverURI =
+    (FTL_CLIENT_INGEST_SERVER ?? browserServerURI)?.replace(/\/$/, '') ?? null
+
   return { props: { channelID, serverURI } }
 }
 

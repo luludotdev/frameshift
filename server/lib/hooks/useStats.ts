@@ -1,6 +1,7 @@
 import useSWR from 'swr'
-import { useCurrentID } from './useCurrentID'
+import { useContext } from './useContext'
 
+// #region Types
 interface RawStats {
   audioCodec: string
   channelID: string
@@ -54,18 +55,18 @@ const parseStats: (raw: RawStats) => Stats = raw => ({
   videoHeight: Number.parseInt(raw.videoHeight, 10),
   videoWidth: Number.parseInt(raw.videoWidth, 10),
 })
+// #endregion
 
-export const useStats: (
-  channelID?: number
-) => { data: Stats | undefined; error: unknown } = channelID => {
-  const currentID = useCurrentID()
+export const useStats: () => {
+  data: Stats | undefined
+  error: unknown
+} = () => {
+  const { channelID, serverURI } = useContext()
 
-  const { data, error } = useSWR<RawStats>(
-    `/api/live/${channelID ?? currentID}`,
-    {
-      refreshInterval: 5 * 1000,
-    }
-  )
+  const uri = `${serverURI ?? ''}/api/live/${channelID}`
+  const { data, error } = useSWR<RawStats>(uri, {
+    refreshInterval: 5 * 1000,
+  })
 
   if (error) return { data: undefined, error }
   if (data === undefined) return { data, error }

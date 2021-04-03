@@ -53,7 +53,14 @@ export const useJanus = (channelID: number, serverURI?: string) => {
 
     let player: FtlPlayer | undefined
     if (ref.current) {
-      player = new FtlPlayer(ref.current, serverURI ?? null, {})
+      const getServer = () => {
+        if (serverURI === undefined) return null
+        return `${serverURI}/janus`
+      }
+
+      const server = getServer()
+      player = new FtlPlayer(ref.current, server, {})
+
       void player.init(channelID)
     }
 

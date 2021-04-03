@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import { useCallback, useEffect, useState } from 'react'
 import type { FC } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
+import { Provider } from '~hooks/useContext'
 import { useDetectOBS } from '~hooks/useDetectOBS'
 import { useJanus } from '~hooks/useJanus'
 import { PlayerControls } from './PlayerControls'
@@ -69,12 +70,13 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
   }, [ref])
 
   return (
-    <div
-      className={clsx('container', isOBS && 'transparent')}
-      onMouseMove={onMouseMove}
-    >
-      <style jsx>
-        {`
+    <Provider value={{ channelID, serverURI }}>
+      <div
+        className={clsx('container', isOBS && 'transparent')}
+        onMouseMove={onMouseMove}
+      >
+        <style jsx>
+          {`
           div.container
             width 100%
             height 100%
@@ -96,35 +98,36 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
             z-index 10
             pointer-events none
         `}
-      </style>
+        </style>
 
-      <style jsx>
-        {`
+        <style jsx>
+          {`
           div.container
             cursor ${atRest ? 'none' : 'initial'}
         `}
-      </style>
+        </style>
 
-      <div className='overlay'>
-        <PlayerLoading hidden={playing || error !== null} />
-        <PlayerError error={error ?? undefined} play={play} />
-        {!isOBS && (
-          <PlayerControls
-            hidden={atRest || !hover}
-            isFullscreen={isFullscreen}
-            onVolumeChanged={onVolumeChanged}
-            onFullscreenClicked={onFullscreenClicked}
-          />
-        )}
+        <div className='overlay'>
+          <PlayerLoading hidden={playing || error !== null} />
+          <PlayerError error={error ?? undefined} play={play} />
+          {!isOBS && (
+            <PlayerControls
+              hidden={atRest || !hover}
+              isFullscreen={isFullscreen}
+              onVolumeChanged={onVolumeChanged}
+              onFullscreenClicked={onFullscreenClicked}
+            />
+          )}
+        </div>
+
+        <video
+          ref={ref}
+          onLoadedData={onLoaded}
+          onMouseOver={onHoverOver}
+          onMouseOut={onHoverOut}
+        />
       </div>
-
-      <video
-        ref={ref}
-        onLoadedData={onLoaded}
-        onMouseOver={onHoverOver}
-        onMouseOut={onHoverOut}
-      />
-    </div>
+    </Provider>
   )
 }
 
