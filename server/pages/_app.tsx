@@ -1,10 +1,24 @@
 import { config, library } from '@fortawesome/fontawesome-svg-core'
-import { faClock, faUser } from '@fortawesome/free-solid-svg-icons'
+import {
+  faClock,
+  faUser,
+  faVolumeDown,
+  faVolumeMute,
+  faVolumeOff,
+  faVolumeUp,
+} from '@fortawesome/free-solid-svg-icons'
 import { AppProps } from 'next/app'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
 config.autoAddCss = false
-library.add(faClock, faUser)
+library.add(
+  faClock,
+  faUser,
+  faVolumeDown,
+  faVolumeMute,
+  faVolumeOff,
+  faVolumeUp
+)
 
 const NextApp = ({ Component, pageProps }: AppProps) => (
   <>
