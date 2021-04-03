@@ -49,7 +49,7 @@ const parseStats: (raw: RawStats) => Stats = raw => ({
   recvPackets: Number.parseInt(raw.recvPackets, 10),
   sourceBitrate: Number.parseInt(raw.sourceBitrate, 10),
   sourcePing: Number.parseInt(raw.sourcePing, 10),
-  startTime: new Date(raw.startTime),
+  startTime: new Date(Number.parseInt(raw.startTime, 10)),
   streamTimeSeconds: Number.parseInt(raw.streamTimeSeconds, 10),
   videoHeight: Number.parseInt(raw.videoHeight, 10),
   videoWidth: Number.parseInt(raw.videoWidth, 10),
