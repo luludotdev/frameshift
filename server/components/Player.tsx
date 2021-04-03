@@ -20,6 +20,15 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
   const onHoverOver = useCallback(() => setHover(true), [])
   const onHoverOut = useCallback(() => setHover(false), [])
 
+  const onVolumeChanged = useCallback(
+    (volume: number) => {
+      if (ref.current) {
+        ref.current.volume = volume
+      }
+    },
+    [ref]
+  )
+
   return (
     <div className={clsx('container', isOBS && 'transparent')}>
       <style jsx>
@@ -50,7 +59,9 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
       <div className='overlay'>
         <PlayerLoading hidden={playing || error !== null} />
         <PlayerError error={error ?? undefined} play={play} />
-        {!isOBS && <PlayerControls hidden={!hover} />}
+        {!isOBS && (
+          <PlayerControls hidden={!hover} onVolumeChanged={onVolumeChanged} />
+        )}
       </div>
 
       <video

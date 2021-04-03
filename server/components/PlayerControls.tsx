@@ -7,8 +7,15 @@ import { Volume } from './controls/Volume'
 import { PlayerOverlay } from './PlayerOverlay'
 import type { IProps } from './PlayerOverlay'
 
+interface ILocalProps {
+  onVolumeChanged: (volume: number) => void
+}
+
 type Props = Except<IProps, 'transparent' | 'fadeDelay' | 'fadeTime'>
-export const PlayerControls: FC<Props> = ({ hidden }) => {
+export const PlayerControls: FC<Props & ILocalProps> = ({
+  hidden,
+  onVolumeChanged,
+}) => {
   const [hover, setHover] = useState<boolean>(false)
   const onHoverOver = useCallback(() => setHover(true), [])
   const onHoverOut = useCallback(() => setHover(false), [])
@@ -76,7 +83,7 @@ export const PlayerControls: FC<Props> = ({ hidden }) => {
         onMouseOut={onHoverOut}
       >
         <div className='bar'>
-          <Volume />
+          <Volume onChanged={onVolumeChanged} />
           <div className='spacer' />
 
           <Viewers />
