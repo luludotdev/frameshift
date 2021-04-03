@@ -46,14 +46,13 @@ export const PlayerControls: FC<Props & ILocalProps> = ({
           div.bar
             $height = 20px
             $color = rgba(7, 7, 7, 0.8)
-            $padding = 0.2rem
 
             width 100%
             height $height
             background-color $color
 
             position relative
-            padding 1rem
+            padding 1rem 1.35rem
             backdrop-filter blur(2px)
 
             display flex
