@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
 import type { FC } from 'react'
 
+export type Icon = FontAwesomeIconProps['icon']
+
 interface IProps {
   title: string
-  icon: FontAwesomeIconProps['icon']
+  icon: Icon
 }
 
 export const ControlValue: FC<IProps> = ({ children, title, icon }) => (

@@ -1,11 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useEffect, useState } from 'react'
 import type { ChangeEvent, FC } from 'react'
+import type { Icon } from './ControlValue'
 
 const STORAGE_KEY = '@@frameshift/volume'
 
 interface IProps {
   onChanged: (volume: number) => void
+}
+
+const volumeIcon: (volume: number) => Icon = volume => {
+  if (volume === 0) return 'volume-mute'
+  if (volume < 0.25) return 'volume-off'
+  if (volume < 0.75) return 'volume-down'
+
+  return 'volume-up'
 }
 
 export const Volume: FC<IProps> = ({ onChanged: cb }) => {
@@ -41,12 +50,19 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
     <div>
       <style jsx>
         {`
+          div.icon
+            cursor pointer
+            display inline-block
+            width 1.125em
+
           input[type=range]
             margin-left .5rem
         `}
       </style>
 
-      <FontAwesomeIcon icon='volume-down' />
+      <div className='icon'>
+        <FontAwesomeIcon icon={volumeIcon(volume)} />
+      </div>
 
       <input
         type='range'
