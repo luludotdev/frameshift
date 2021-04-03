@@ -1,6 +1,8 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
+import type { FC } from 'react'
 import useAnimationFrame from 'use-animation-frame'
 import { useStats } from '~hooks/useStats'
+import { ControlValue } from './ControlValue'
 
 const DEFAULT_TIME = '00:00'
 
@@ -21,25 +23,32 @@ export const Uptime: FC = () => {
   const { data, error } = useStats()
   const [time, setTime] = useState<string>(DEFAULT_TIME)
 
-  useAnimationFrame(e => {
-    if (error) {
-      setTime('Unknown')
-      return
-    }
+  useAnimationFrame(
+    e => {
+      if (error) {
+        setTime('Offline')
+        return
+      }
 
-    if (data === undefined) {
-      setTime(DEFAULT_TIME)
-      return
-    }
+      if (data === undefined) {
+        setTime(DEFAULT_TIME)
+        return
+      }
 
-    const started = data.startTime.getTime()
-    const now = Date.now()
+      const started = data.startTime.getTime()
+      const now = Date.now()
 
-    const delta = now - started
-    const newTime = formatMillis(delta)
+      const delta = now - started
+      const newTime = formatMillis(delta)
 
-    setTime(newTime)
-  }, [])
+      setTime(newTime)
+    },
+    [data, error]
+  )
 
-  return <div>uptime: {time}</div>
+  return (
+    <ControlValue title='Uptime' icon='clock'>
+      {time}
+    </ControlValue>
+  )
 }
