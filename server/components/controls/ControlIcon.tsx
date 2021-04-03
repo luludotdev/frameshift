@@ -56,7 +56,7 @@ export const ControlIcon: FC<Props & IProps> = ({
 
             &:hover::after
               background-color ${
-                hasClickHandler ? 'rgba(255, 255, 255, 0.35)' : 'transparent'
+                hasClickHandler ? 'rgba(255, 255, 255, 0.25)' : 'transparent'
               }
         `}
       </style>
