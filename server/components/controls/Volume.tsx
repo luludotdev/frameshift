@@ -12,20 +12,20 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
   const [volume, setVolume] = useState<number>(1)
   const handleChanged = useCallback(
     (vol: number) => {
+      setVolume(vol)
+      localStorage.setItem(STORAGE_KEY, vol.toFixed(2))
+
       if (typeof cb === 'function') cb(vol)
     },
-    [cb]
+    [setVolume, cb]
   )
 
   const onChanged = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
       const vol = ev.target.valueAsNumber
-      setVolume(ev.target.valueAsNumber)
-
-      localStorage.setItem(STORAGE_KEY, vol.toFixed(2))
       handleChanged(vol)
     },
-    [setVolume, handleChanged]
+    [handleChanged]
   )
 
   useEffect(() => {
@@ -34,7 +34,6 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
     )
 
     const vol = Number.isNaN(storedVolume) ? 1 : storedVolume
-    setVolume(vol)
     handleChanged(vol)
   }, [handleChanged])
 
