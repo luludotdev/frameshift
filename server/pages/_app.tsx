@@ -1,4 +1,9 @@
+import { config, library } from '@fortawesome/fontawesome-svg-core'
 import { AppProps } from 'next/app'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
+config.autoAddCss = false
+library.add()
 
 const NextApp = ({ Component, pageProps }: AppProps) => (
   <>

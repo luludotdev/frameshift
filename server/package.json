@@ -10,6 +10,9 @@
     "test": "yarn run lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "clsx": "^1.1.1",
     "ioredis": "^4.24.6",
     "janus-ftl-player": "0.0.8-alpha",
