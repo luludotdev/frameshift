@@ -1,7 +1,9 @@
 import clsx from 'clsx'
-import { FC } from 'react'
+import { useCallback, useState } from 'react'
+import type { FC } from 'react'
 import { useDetectOBS } from '~hooks/useDetectOBS'
 import { useJanus } from '~hooks/useJanus'
+import { PlayerControls } from './PlayerControls'
 import { PlayerError } from './PlayerError'
 import { PlayerLoading } from './PlayerLoading'
 
@@ -13,6 +15,10 @@ interface IProps {
 const Player: FC<IProps> = ({ channelID, serverURI }) => {
   const { playing, error, ref, play, onLoaded } = useJanus(channelID, serverURI)
   const isOBS = useDetectOBS()
+
+  const [hover, setHover] = useState<boolean>(false)
+  const onHoverOver = useCallback(() => setHover(true), [])
+  const onHoverOut = useCallback(() => setHover(false), [])
 
   return (
     <div className={clsx('container', isOBS && 'transparent')}>
@@ -44,9 +50,15 @@ const Player: FC<IProps> = ({ channelID, serverURI }) => {
       <div className='overlay'>
         <PlayerLoading hidden={playing || error !== null} />
         <PlayerError error={error ?? undefined} play={play} />
+        {!isOBS && <PlayerControls hidden={!hover} />}
       </div>
 
-      <video ref={ref} onLoadedData={onLoaded} />
+      <video
+        ref={ref}
+        onLoadedData={onLoaded}
+        onMouseOver={onHoverOver}
+        onMouseOut={onHoverOut}
+      />
     </div>
   )
 }
