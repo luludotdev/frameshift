@@ -3,12 +3,18 @@ import { FC } from 'react'
 export interface IProps {
   hidden?: boolean
   transparent?: boolean
+
+  fadeTime?: number
+  fadeDelay?: number
 }
 
 export const PlayerOverlay: FC<IProps> = ({
   children,
   hidden,
   transparent,
+
+  fadeTime,
+  fadeDelay,
 }) => (
   <div>
     <style jsx>
@@ -26,9 +32,14 @@ export const PlayerOverlay: FC<IProps> = ({
           display flex
           align-items center
           justify-content center
+      `}
+    </style>
 
-          transition 0.5s opacity ease
-          transition-delay 0.25s
+    <style jsx>
+      {`
+        div
+          transition ${fadeTime ?? 0.5}s opacity ease
+          transition-delay ${fadeDelay ?? 0.25}s
       `}
     </style>
 
