@@ -1,8 +1,10 @@
+import cors from 'cors'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
 import { dataKey, redis } from '~redis'
 
 const router = nc<NextApiRequest, NextApiResponse>()
+router.use(cors())
 
 router.get(async (request, resp) => {
   const streamID = Array.isArray(request.query.streamID)
