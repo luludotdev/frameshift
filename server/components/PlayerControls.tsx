@@ -1,6 +1,9 @@
 import { useCallback, useState } from 'react'
 import type { FC } from 'react'
 import type { Except } from 'type-fest'
+import { Uptime } from './controls/Uptime'
+import { Viewers } from './controls/Viewers'
+import { Volume } from './controls/Volume'
 import { PlayerOverlay } from './PlayerOverlay'
 import type { IProps } from './PlayerOverlay'
 
@@ -38,10 +41,11 @@ export const PlayerControls: FC<Props> = ({ hidden }) => {
 
             position relative
             padding 1rem
+            backdrop-filter blur(2px)
+
             display flex
             align-items center
-
-            backdrop-filter blur(2px)
+            gap 2rem
 
             &::before
               content ' '
@@ -53,6 +57,9 @@ export const PlayerControls: FC<Props> = ({ hidden }) => {
               width 200%
               height $height
               background linear-gradient(0deg, $color 0%, transparent 100%);
+
+            & > div.spacer
+              flex-grow 1
         `}
       </style>
 
@@ -68,7 +75,13 @@ export const PlayerControls: FC<Props> = ({ hidden }) => {
         onMouseOver={onHoverOver}
         onMouseOut={onHoverOut}
       >
-        <div className='bar'>bar along the bottom</div>
+        <div className='bar'>
+          <Volume />
+          <div className='spacer' />
+
+          <Viewers />
+          <Uptime />
+        </div>
       </div>
     </PlayerOverlay>
   )
