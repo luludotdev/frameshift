@@ -69,12 +69,66 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
     setOldVolume(oldVol)
   }, [setVolume, setOldVolume, cb])
 
+  const colorA = 'white'
+  const colorB = 'rgba(255, 255, 255, 0.2)'
+
+  const grad = `linear-gradient(90deg, ${colorA} 0%, ${colorA} ${
+    volume * 100
+  }%, ${colorB} ${volume * 100}%, ${colorB} 100%)`
+
   return (
     <div>
       <style jsx>
         {`
-          input[type=range]
+          $track-height = 1rem
+          $track-width = 7.5rem
+          $thumb-size = 1rem
+
+          .slider
+            height $track-height
+            width $track-width
+            display inline-flex
+            position relative
+            align-items center
+            justify-content center
+            transform translateY(2px)
             margin-left .5rem
+
+          .track
+            position absolute
+            height 2px
+            width $track-width
+            background white
+            border-radius 1px
+
+          input[type=range]
+            position absolute
+            top 0
+            bottom 0
+
+            z-index 10
+            width $track-width
+            margin 0
+
+            appearance none
+            background transparent
+
+            cursor pointer
+
+            &:active, &:focus, &:hover
+              border none
+              outline none
+              box-shadow none
+
+            $thumb
+              appearance none
+              background white
+              width $thumb-size
+              height $thumb-size
+              border-radius 50%
+
+            &::-webkit-slider-thumb
+              @extends $thumb
         `}
       </style>
 
@@ -85,14 +139,18 @@ export const Volume: FC<IProps> = ({ onChanged: cb }) => {
         onClick={handleMute}
       />
 
-      <input
-        type='range'
-        min={0}
-        max={1}
-        step={0.01}
-        value={volume}
-        onChange={onChanged}
-      />
+      <div className='slider'>
+        <input
+          type='range'
+          min={0}
+          max={1}
+          step={0.01}
+          value={volume}
+          onChange={onChanged}
+        />
+
+        <div className='track' style={{ background: grad }} />
+      </div>
     </div>
   )
 }
