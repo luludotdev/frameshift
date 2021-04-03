@@ -2,9 +2,14 @@ import { FC } from 'react'
 
 export interface IProps {
   hidden?: boolean
+  transparent?: boolean
 }
 
-export const PlayerOverlay: FC<IProps> = ({ children, hidden }) => (
+export const PlayerOverlay: FC<IProps> = ({
+  children,
+  hidden,
+  transparent,
+}) => (
   <div>
     <style jsx>
       {`
@@ -16,7 +21,6 @@ export const PlayerOverlay: FC<IProps> = ({ children, hidden }) => (
           width 100%
           height 100%
 
-          background-color rgb(19, 19, 19)
           color white
 
           display flex
@@ -31,8 +35,9 @@ export const PlayerOverlay: FC<IProps> = ({ children, hidden }) => (
     <style jsx>
       {`
         div
+          background-color ${transparent ? 'transparent' : 'rgb(19, 19, 19)'}
           opacity ${hidden ? 0 : 1}
-          pointer-events ${hidden ? 'none' : 'initial'}
+          pointer-events ${transparent ? 'none' : hidden ? 'none' : 'initial'}
       `}
     </style>
 
