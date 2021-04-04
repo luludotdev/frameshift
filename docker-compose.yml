@@ -37,8 +37,8 @@ services:
       - FTL_SERVICE_REST_AUTH_TOKEN=secret_change_me
 
       # This should point towards the proxied ingest
-      # server API.
-      # eg: https://ftl.example.com/janus
+      # server API, minus `/janus`.
+      # eg: https://ftl.example.com/
       - FTL_CLIENT_INGEST_SERVER=<ingest url>
 
       # Controls how the HMAC portion of a stream key is
