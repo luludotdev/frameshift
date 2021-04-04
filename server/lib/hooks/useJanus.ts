@@ -1,11 +1,6 @@
 import { FtlPlayer } from 'janus-ftl-player'
-import {
-  ReactEventHandler,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import type { ReactEventHandler } from 'react'
 
 export class PlayerError extends Error {}
 export class AutoplayError extends PlayerError {}

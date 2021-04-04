@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { AutoplayError, PlayerError as WrappedError } from '~hooks/useJanus'
 import { PlayerOverlay } from './PlayerOverlay'
 import { PlayerPlayPrompt } from './PlayerPlayPrompt'

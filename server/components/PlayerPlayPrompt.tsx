@@ -1,4 +1,5 @@
-import { FC, useCallback, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
+import type { FC } from 'react'
 import { AutoplayError } from '~hooks/useJanus'
 import { PlayerOverlay } from './PlayerOverlay'
 

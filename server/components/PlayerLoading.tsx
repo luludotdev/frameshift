@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import type { FC } from 'react'
 import Spinner from '~assets/svg/spinner.svg'
 import { PlayerOverlay } from './PlayerOverlay'
 import type { IProps } from './PlayerOverlay'

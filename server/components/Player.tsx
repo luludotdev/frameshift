@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import type { FC } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import { Provider } from '~hooks/useContext'
