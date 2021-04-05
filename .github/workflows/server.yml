@@ -26,11 +26,13 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v2
         with:
-          path: '**/node_modules'
+          path: './server/**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install packages
+        working-directory: ./server
         run: yarn install --frozen-lockfile
       - name: Test
+        working-directory: ./server
         run: yarn run test
   build:
     needs: test
