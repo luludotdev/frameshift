@@ -10,33 +10,32 @@ export const useJanus = (channelID: number, serverURI?: string) => {
   const [error, setError] = useState<PlayerError | null>(null)
   const ref = useRef<HTMLVideoElement | null>(null)
 
-  const play = useCallback(() => {
+  const play = useCallback(async () => {
     if (ref.current) {
       setError(null)
 
-      ref.current
-        .play()
-        .then(() => {
-          setPlaying(true)
-        })
-        .catch(() => {
-          setError(new AutoplayError())
-        })
+      try {
+        await ref.current.play()
+        setPlaying(true)
+      } catch {
+        setError(new AutoplayError())
+      }
     }
   }, [ref])
 
-  const onLoaded: ReactEventHandler<HTMLVideoElement> = useCallback(ev => {
-    if (ev.target instanceof HTMLVideoElement) {
-      ev.target
-        .play()
-        .then(() => {
+  const onLoaded: ReactEventHandler<HTMLVideoElement> = useCallback(
+    async ev => {
+      if (ev.target instanceof HTMLVideoElement) {
+        try {
+          await ev.target.play()
           setPlaying(true)
-        })
-        .catch(() => {
+        } catch {
           setError(new AutoplayError())
-        })
-    }
-  }, [])
+        }
+      }
+    },
+    []
+  )
 
   const onUnhandled = useCallback((ev: PromiseRejectionEvent) => {
     ev.preventDefault()
