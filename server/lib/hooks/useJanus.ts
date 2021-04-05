@@ -1,6 +1,9 @@
-import { FtlPlayer } from 'janus-ftl-player'
+// TODO: Temporarily use own version of
+// janus-ftl-player until Stereo PR lands
+// import { FtlPlayer } from 'janus-ftl-player'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ReactEventHandler } from 'react'
+import { FtlPlayer } from '../janus'
 
 export class PlayerError extends Error {}
 export class AutoplayError extends PlayerError {}

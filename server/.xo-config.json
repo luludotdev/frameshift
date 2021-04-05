@@ -6,7 +6,7 @@
   "semicolon": false,
   "prettier": true,
 
-  "ignores": ["./next-env.d.ts", "./next.config.js"],
+  "ignores": ["./next-env.d.ts", "./next.config.js", "./lib/janus/*"],
 
   "rules": {
     "no-negated-condition": 0,
