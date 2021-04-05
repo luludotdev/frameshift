@@ -41,6 +41,12 @@
     }],
 
     "node/file-extension-in-import": 0,
+    "node/no-unsupported-features/es-syntax": ["error", {
+      "ignores": [
+        "dynamicImport",
+        "modules"
+      ]
+    }],
 
     "unicorn/filename-case": 0,
     "unicorn/no-reduce": 0,
