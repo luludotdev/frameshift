@@ -6,7 +6,13 @@
   "semicolon": false,
   "prettier": true,
 
-  "ignores": ["./next-env.d.ts", "./next.config.js"],
+  "ignores": ["./next-env.d.ts"],
+  "overrides": [{
+    "files": "./*.config.js",
+    "rules": {
+      "@typescript-eslint/no-confusing-void-expression": 0
+    }
+  }],
 
   "rules": {
     "no-negated-condition": 0,
