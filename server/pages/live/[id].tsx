@@ -39,13 +39,13 @@ const Live: NextPage<IProps> = ({ channelID, serverURI }) => {
 export const getServerSideProps: GetServerSideProps<IProps> = async ({
   query,
 }) => {
-  const queryID = Array.isArray(query.id) ? query.id[0] : query.id!
-  const parsed = Number.parseInt(queryID, 10)
+  const queryID = Array.isArray(query.id) ? query.id[0] : query.id
+  const parsed = Number.parseInt(queryID ?? 'NaN', 10)
   const channelID = Number.isNaN(parsed) ? null : parsed
 
   const queryServerURI: string | undefined = Array.isArray(query.serverURI)
     ? query.serverURI[0]
-    : query.serverURI!
+    : query.serverURI
 
   const browserServerURI =
     queryServerURI === undefined

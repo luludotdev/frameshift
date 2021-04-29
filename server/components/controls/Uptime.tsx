@@ -23,28 +23,25 @@ export const Uptime: FC = () => {
   const { data, error } = useStats()
   const [time, setTime] = useState<string>(DEFAULT_TIME)
 
-  useAnimationFrame(
-    e => {
-      if (error) {
-        setTime('Offline')
-        return
-      }
+  useAnimationFrame(() => {
+    if (error) {
+      setTime('Offline')
+      return
+    }
 
-      if (data === undefined) {
-        setTime(DEFAULT_TIME)
-        return
-      }
+    if (data === undefined) {
+      setTime(DEFAULT_TIME)
+      return
+    }
 
-      const started = data.startTime.getTime()
-      const now = Date.now()
+    const started = data.startTime.getTime()
+    const now = Date.now()
 
-      const delta = now - started
-      const newTime = formatMillis(delta)
+    const delta = now - started
+    const newTime = formatMillis(delta)
 
-      setTime(newTime)
-    },
-    [data, error]
-  )
+    setTime(newTime)
+  }, [data, error])
 
   return (
     <ControlValue title='Uptime' icon='clock'>

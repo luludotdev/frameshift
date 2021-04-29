@@ -20,7 +20,7 @@ router.post(async (request, resp) => {
   const key = dataKey(streamID)
   p.expire(key, 10)
 
-  const metadata: any[] = Object.entries(request.body).flat()
+  const metadata = Object.entries(request.body as Record<string, string>).flat()
   p.hset(key, ...metadata)
 
   await p.exec()

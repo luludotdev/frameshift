@@ -30,9 +30,11 @@ router.get(async (request, resp) => {
   }
 
   const mime = await redis.hget(key, PreviewKeyField.MIME)
-  const data = await redis.hgetBuffer(key, PreviewKeyField.Buffer)
+  if (mime !== null) {
+    resp.setHeader('Content-Type', mime)
+  }
 
-  resp.setHeader('Content-Type', mime!)
+  const data = await redis.hgetBuffer(key, PreviewKeyField.Buffer)
   resp.send(data)
 })
 
