@@ -5,5 +5,5 @@ ftl.example.com {
 	reverse_proxy /janus/* :8088
 
 	# Proxy Web Client
-	reverse_proxy :3333
+	reverse_proxy :3000
 }
