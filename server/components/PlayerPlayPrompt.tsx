@@ -9,21 +9,19 @@ interface IProps {
 }
 
 export const PlayerPlayPrompt: FC<IProps> = ({ error, play }) => {
-  const handleKeypress = useCallback(
-    (ev: KeyboardEvent) => {
-      if (ev.key !== ' ') return
+  const handleClick = useCallback(
+    () => {
 
-      ev.preventDefault()
       play()
     },
     [play]
   )
 
   useEffect(() => {
-    window.addEventListener('keypress', handleKeypress)
+    window.addEventListener('click', handleClick)
 
     return () => {
-      window.removeEventListener('keypress', handleKeypress)
+      window.removeEventListener('click', handleClick)
     }
   })
 
@@ -53,7 +51,7 @@ export const PlayerPlayPrompt: FC<IProps> = ({ error, play }) => {
       <div>
         <h1>Autoplay Disabled</h1>
         <p>
-          Press <kbd>SPACE</kbd> to play...
+          Click to play...
         </p>
       </div>
     </PlayerOverlay>
