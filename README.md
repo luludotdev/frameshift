@@ -11,7 +11,7 @@ The Frameshift stack is deployed using [Docker](https://docs.docker.com/get-star
 
 Both [web client](https://github.com/lolPants/frameshift/packages/633173) and [ingest server](https://github.com/lolPants/frameshift/packages/633178) are available as Docker Images. A sample [Docker Compose file](https://github.com/lolPants/frameshift/blob/master/docker-compose.yml) has been provided to help you get started. **Please note that this is just an example, and not intended to be used verbatim.**
 
-You are expected to reverse proxy both the ingest server and the web client to the same hostname. A sample [Caddyfile](https://github.com/lolPants/frameshift/blob/master/Caddyfile) has been provided to show what needs proxying and where. In addition to this you will need to open the required ports that aren't being proxied via HTTP, as these are used for ingest and playback.
+You are expected to reverse proxy both the ingest server and the web client to the same hostname. A sample [Caddyfile](https://github.com/lolPants/frameshift/blob/master/Caddyfile) has been provided to show what needs proxying and where. **Note that Caddy is not required, just recommended. You are free to use any HTTP reverse proxy instead.** In addition to this, you will need to open the required ports that aren't being proxied via HTTP, as these are used for ingest and playback.
 
 ## 🎥 Ingest Server
 The ingest server is Glimesh's [Janus FTL Plugin](https://github.com/Glimesh/janus-ftl-plugin). Automatic Docker builds are provided for convenience sake. It must be configured to operate using the REST Service Connection mode, see the sample Compose file for the required environment variables.
