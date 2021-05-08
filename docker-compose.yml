@@ -1,3 +1,5 @@
+# THIS IS A SAMPLE FILE
+# IS IS NOT INTENDED TO BE USED VERBATIM
 version: '3.6'
 services:
   ingest:

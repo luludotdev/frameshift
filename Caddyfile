@@ -1,3 +1,6 @@
+# THIS IS A SAMPLE FILE
+# IS IS NOT INTENDED TO BE USED VERBATIM
+
 # This can be any (sub)domain pointing to your server
 ftl.example.com {
 	# Proxy Ingest Server API
