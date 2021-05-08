@@ -1,7 +1,15 @@
+# THIS IS A SAMPLE FILE
+# IS IS NOT INTENDED TO BE USED VERBATIM
 version: '3.6'
 services:
   ingest:
+<<<<<<< HEAD
     image: docker.pkg.github.com/lolpants/frameshift/frameshift-ingest:cdd8e6b
+=======
+    # Visit https://github.com/lolPants/frameshift/packages/633178
+    # to find latest image tag
+    image: docker.pkg.github.com/lolpants/frameshift/frameshift-ingest
+>>>>>>> 9aa4dce15bd79b0db40e729b298442dac4838252
     restart: unless-stopped
     networks:
       - internal
@@ -25,8 +33,15 @@ services:
       # This should be set to a long, cryptographically
       # secure random string.
       - FTL_SERVICE_REST_AUTH_TOKEN=secret_change_me
+<<<<<<< HEAD
   web:
     image: docker.pkg.github.com/lolpants/frameshift/frameshift-server:fca963d
+=======
+  server:
+    # Visit https://github.com/lolPants/frameshift/packages/633173
+    # to find latest image tag
+    image: docker.pkg.github.com/lolpants/frameshift/frameshift-server
+>>>>>>> 9aa4dce15bd79b0db40e729b298442dac4838252
     restart: unless-stopped
     networks:
       - internal

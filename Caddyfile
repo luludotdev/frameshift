@@ -1,9 +1,17 @@
+# THIS IS A SAMPLE FILE
+# IS IS NOT INTENDED TO BE USED VERBATIM
+
 # This can be any (sub)domain pointing to your server
 ftl.example.com {
 	# Proxy Ingest Server API
+	# Port must match Docker Port Mapping
 	reverse_proxy /janus :8088
 	reverse_proxy /janus/* :8088
 
 	# Proxy Web Client
+<<<<<<< HEAD
+=======
+	# Port must match Docker Port Mapping
+>>>>>>> 9aa4dce15bd79b0db40e729b298442dac4838252
 	reverse_proxy :3000
 }
