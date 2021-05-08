@@ -29,5 +29,8 @@ You can set the ingest server URL using the `FTL_CLIENT_INGEST_SERVER` environme
 ### Ingest Backend
 The ingest server is configured to communicate via an HTTP REST API to coordinate incoming streams and handle authentication etc. The web client serves this, and can be configured via environment variables. Again, refer to the sample Compose file for a list of variables and their uses.
 
+## 📡 Streaming to a Frameshift Instance
+See the dedicated [docs page](https://github.com/lolPants/frameshift/blob/master/STREAMING.md).
+
 ## 🤔 What's with the name?
 The [Frame-Shift Drive](https://elite-dangerous.fandom.com/wiki/Frame_Shift_Drive) is a fictional device from the [Elite Dangerous](https://www.elitedangerous.com/) universe which propels ships to faster-than-light speeds. I also think the name just sounds cool and fits with the theme of the project.
