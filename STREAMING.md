@@ -19,8 +19,7 @@ A successful response will be a JSON object with a single `hmacKey` property. Th
 
 ```sh
 # Example using cURL
-$ curl -H 'Authorization: <auth_token>' <api_base>/api/inges
-t/hmac/<channel_id>
+$ curl -H 'Authorization: <auth_token>' <api_base>/api/ingest/hmac/<channel_id>
 ```
 
 ## ⚙️ OBS Setup
