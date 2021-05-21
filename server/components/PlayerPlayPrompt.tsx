@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react'
 import type { FC } from 'react'
+import { useDeviceDetect } from '~hooks/useDeviceDetect'
 import { AutoplayError } from '~hooks/useJanus'
 import { PlayerOverlay } from './PlayerOverlay'
 
@@ -9,6 +10,8 @@ interface IProps {
 }
 
 export const PlayerPlayPrompt: FC<IProps> = ({ error, play }) => {
+  const { isMobile } = useDeviceDetect()
+
   const handleKeypress = useCallback(
     (ev: KeyboardEvent) => {
       if (ev.key !== ' ') return
@@ -19,11 +22,21 @@ export const PlayerPlayPrompt: FC<IProps> = ({ error, play }) => {
     [play]
   )
 
+  const handleClick = useCallback(
+    (ev: MouseEvent) => {
+      ev.preventDefault()
+      play()
+    },
+    [play]
+  )
+
   useEffect(() => {
     window.addEventListener('keypress', handleKeypress)
+    window.addEventListener('click', handleClick)
 
     return () => {
       window.removeEventListener('keypress', handleKeypress)
+      window.removeEventListener('click', handleClick)
     }
   })
 
@@ -53,7 +66,13 @@ export const PlayerPlayPrompt: FC<IProps> = ({ error, play }) => {
       <div>
         <h1>Autoplay Disabled</h1>
         <p>
-          Press <kbd>SPACE</kbd> to play...
+          {isMobile ? (
+            <>Tap the screen to play.</>
+          ) : (
+            <>
+              Press <kbd>SPACE</kbd> to play...
+            </>
+          )}
         </p>
       </div>
     </PlayerOverlay>
