@@ -51,6 +51,9 @@ jobs:
           registry: ghcr.io
           username: ${{ steps.prepare.outputs.docker_user }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Add Metadata Label
+        working-directory: ./ingest
+        run: printf '\nARG GIT_REPO\nLABEL org.opencontainers.image.source=${GIT_REPO}\n' >> Dockerfile
       - name: Build and Push
         uses: docker/build-push-action@v2
         with:
