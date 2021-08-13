@@ -8,7 +8,7 @@ interface IContext {
   videoRef: MutableRefObject<HTMLVideoElement | null>
 }
 
-// @ts-expect-error
+// @ts-expect-error Dispatch not included
 const defaultCtx: IContext = {}
 
 const context = createContext<IContext>(defaultCtx)

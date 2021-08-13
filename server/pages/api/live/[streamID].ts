@@ -25,8 +25,8 @@ router.get(async (request, resp) => {
   resp.json(sortObject(stream))
 })
 
-function sortObject<T>(obj: Record<string, T>): Record<string, T> {
-  const entries: Array<[string, T]> = Object.entries(obj)
+function sortObject<T>(object: Record<string, T>): Record<string, T> {
+  const entries: Array<[string, T]> = Object.entries(object)
   entries.sort((a, b) => a[0].localeCompare(b[0]))
 
   return Object.fromEntries(entries)

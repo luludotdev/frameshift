@@ -64,7 +64,7 @@ export const useStats: () => {
   const { channelID, serverURI } = useContext()
 
   const uri = `${serverURI ?? ''}/api/live/${channelID}`
-  const { data, error } = useSWR<RawStats>(uri, {
+  const { data, error } = useSWR<RawStats, unknown>(uri, {
     refreshInterval: 5 * 1000,
   })
 

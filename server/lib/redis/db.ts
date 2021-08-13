@@ -1,5 +1,6 @@
 import Redis from 'ioredis'
 import { schedule } from 'node-cron'
+import process from 'process'
 import {
   FTL_CLIENT_REDIS_DB_BASE as REDIS_DB_BASE,
   FTL_CLIENT_REDIS_HOST as REDIS_HOST,
