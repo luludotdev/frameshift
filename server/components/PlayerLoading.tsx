@@ -43,6 +43,7 @@ export const PlayerLoading: FC<Props> = ({ ...props }) => {
       </style>
 
       <div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={Spinner.src} alt='Loading Spinner' />
 
         <p className={clsx(tooLong && 'visible')}>

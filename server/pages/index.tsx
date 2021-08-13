@@ -64,6 +64,7 @@ const App: NextPage = () => (
 
       <h2>Watching Streams</h2>
       <p>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         Visit <a href='/live/[channelID]'>/live/[channelID]</a> to watch a
         stream. Replace <code>[channelID]</code> with the stream&apos;s Channel
         ID.
