@@ -10,7 +10,6 @@ import {
   faVolumeUp,
 } from '@fortawesome/free-solid-svg-icons'
 import { AppProps } from 'next/app'
-import Head from 'next/head'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
 config.autoAddCss = false
@@ -41,14 +40,6 @@ const NextApp = ({ Component, pageProps }: AppProps) => (
         height 100%
     `}
     </style>
-
-    <Head>
-      <link rel='preconnect' href='https://fonts.gstatic.com' />
-      <link
-        href='https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap'
-        rel='stylesheet'
-      />
-    </Head>
 
     <Component {...pageProps} />
   </>
