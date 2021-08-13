@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import type { FC } from 'react'
 import Spinner from '~assets/svg/spinner.svg'
 import { PlayerOverlay } from './PlayerOverlay'
-import type { IProps } from './PlayerOverlay'
+import type { Props } from './PlayerOverlay'
 
-export const PlayerLoading: FC<IProps> = ({ ...props }) => {
+export const PlayerLoading: FC<Props> = ({ ...props }) => {
   const [tooLong, setTooLong] = useState<boolean>(false)
   useEffect(() => {
     setTimeout(() => {

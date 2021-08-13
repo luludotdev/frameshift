@@ -2,12 +2,12 @@ import type { FC } from 'react'
 import { ControlIcon } from './ControlIcon'
 import type { Icon } from './ControlIcon'
 
-interface IProps {
+interface Props {
   title: string
   icon: Icon
 }
 
-export const ControlValue: FC<IProps> = ({ children, title, icon }) => (
+export const ControlValue: FC<Props> = ({ children, title, icon }) => (
   <div title={title}>
     <style jsx>
       {`

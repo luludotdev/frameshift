@@ -5,13 +5,13 @@ import type { Except } from 'type-fest'
 
 export type Icon = FontAwesomeIconProps['icon']
 
-interface IProps {
+interface Props {
   iconStyle?: CSSProperties
   onClick?: (ev: MouseEvent<HTMLDivElement>) => void
 }
 
-type Props = Except<FontAwesomeIconProps, 'onClick'>
-export const ControlIcon: FC<Props & IProps> = ({
+type IconProps = Except<FontAwesomeIconProps, 'onClick'>
+export const ControlIcon: FC<IconProps & Props> = ({
   style,
   iconStyle,
 

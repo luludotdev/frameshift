@@ -6,9 +6,9 @@ import { Uptime } from './controls/Uptime'
 import { Viewers } from './controls/Viewers'
 import { Volume } from './controls/Volume'
 import { PlayerOverlay } from './PlayerOverlay'
-import type { IProps } from './PlayerOverlay'
+import type { Props as OverlayProps } from './PlayerOverlay'
 
-type Props = Except<IProps, 'transparent' | 'fadeDelay' | 'fadeTime'>
+type Props = Except<OverlayProps, 'transparent' | 'fadeDelay' | 'fadeTime'>
 export const PlayerControls: FC<Props> = ({ hidden }) => {
   const [hover, setHover] = useState<boolean>(false)
   const onHoverOver = useCallback(() => setHover(true), [])

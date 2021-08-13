@@ -4,12 +4,12 @@ import { useDeviceDetect } from '~hooks/useDeviceDetect'
 import { AutoplayError } from '~hooks/useJanus'
 import { PlayerOverlay } from './PlayerOverlay'
 
-interface IProps {
+interface Props {
   error?: AutoplayError
   play: () => void
 }
 
-export const PlayerPlayPrompt: FC<IProps> = ({ error, play }) => {
+export const PlayerPlayPrompt: FC<Props> = ({ error, play }) => {
   const { isMobile } = useDeviceDetect()
 
   const handleKeypress = useCallback(

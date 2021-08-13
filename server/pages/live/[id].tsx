@@ -8,12 +8,12 @@ const Player = dynamic(async () => import('~components/Player'), {
   ssr: false,
 })
 
-interface IProps {
+interface Props {
   channelID: number | null
   serverURI: string | null
 }
 
-const Live: NextPage<IProps> = ({ channelID, serverURI }) => {
+const Live: NextPage<Props> = ({ channelID, serverURI }) => {
   if (channelID === null) return <Error404 />
 
   return (
@@ -36,7 +36,7 @@ const Live: NextPage<IProps> = ({ channelID, serverURI }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps<IProps> = async ({
+export const getServerSideProps: GetServerSideProps<Props> = async ({
   query,
 }) => {
   const queryID = Array.isArray(query.id) ? query.id[0] : query.id

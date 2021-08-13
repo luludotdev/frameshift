@@ -3,12 +3,12 @@ import { AutoplayError, PlayerError as WrappedError } from '~hooks/useJanus'
 import { PlayerOverlay } from './PlayerOverlay'
 import { PlayerPlayPrompt } from './PlayerPlayPrompt'
 
-interface IProps {
+interface Props {
   error?: WrappedError
   play: () => void
 }
 
-export const PlayerError: FC<IProps> = ({ error, play }) =>
+export const PlayerError: FC<Props> = ({ error, play }) =>
   error instanceof AutoplayError ? (
     <PlayerPlayPrompt error={error} play={play} />
   ) : (

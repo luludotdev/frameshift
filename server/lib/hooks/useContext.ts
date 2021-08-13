@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 import type { MutableRefObject } from 'react'
 
-interface IContext {
+interface Context {
   channelID: number
   serverURI: string | undefined
 
@@ -9,9 +9,9 @@ interface IContext {
 }
 
 // @ts-expect-error Dispatch not included
-const defaultCtx: IContext = {}
+const defaultCtx: Context = {}
 
-const context = createContext<IContext>(defaultCtx)
+const context = createContext<Context>(defaultCtx)
 const { Provider } = context
 export { Provider }
 

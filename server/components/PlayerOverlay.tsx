@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-export interface IProps {
+export interface Props {
   hidden?: boolean
   transparent?: boolean
 
@@ -8,7 +8,7 @@ export interface IProps {
   fadeDelay?: number
 }
 
-export const PlayerOverlay: FC<IProps> = ({
+export const PlayerOverlay: FC<Props> = ({
   children,
   hidden,
   transparent,

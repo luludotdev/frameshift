@@ -9,12 +9,12 @@ import { PlayerControls } from './PlayerControls'
 import { PlayerError } from './PlayerError'
 import { PlayerLoading } from './PlayerLoading'
 
-interface IProps {
+interface Props {
   channelID: number
   serverURI?: string
 }
 
-const Player: FC<IProps> = ({ channelID, serverURI }) => {
+const Player: FC<Props> = ({ channelID, serverURI }) => {
   const { playing, error, ref, play, onLoaded } = useJanus(channelID, serverURI)
   const isOBS = useDetectOBS()
 
