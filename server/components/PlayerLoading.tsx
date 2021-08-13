@@ -43,7 +43,8 @@ export const PlayerLoading: FC<Props> = ({ ...props }) => {
       </style>
 
       <div>
-        <img src={Spinner} alt='Loading Spinner' />
+        <img src={Spinner.src} alt='Loading Spinner' />
+
         <p className={clsx(tooLong && 'visible')}>
           Loading taking too long? Check your Channel ID.
         </p>

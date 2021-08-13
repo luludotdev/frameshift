@@ -1,6 +1,4 @@
-const withImages = require('next-images')
-
-module.exports = withImages({
-  inlineImageLimit: false,
+/** @type {import('next').NextConfig} */
+module.exports = {
   reactStrictMode: true,
-})
+}
