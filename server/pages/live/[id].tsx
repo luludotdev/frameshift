@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { FTL_CLIENT_INGEST_SERVER } from '~env'
 import Error404 from '~pages/404'
 
+// eslint-disable-next-line node/no-unsupported-features/es-syntax
 const Player = dynamic(async () => import('~components/Player'), {
   ssr: false,
 })
