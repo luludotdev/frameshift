@@ -11,6 +11,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        suffix:
+          - ''
+          - '-playout-delay'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -51,6 +56,9 @@ jobs:
           registry: ghcr.io
           username: ${{ steps.prepare.outputs.docker_user }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable Playout Delay
+        if: ${{ matrix.suffix == '-playout-delay' }}
+        run: ./patch_ingest.sh
       - name: Add Metadata Label
         working-directory: ./ingest
         run: printf '\nARG GIT_REPO\nLABEL org.opencontainers.image.source=${GIT_REPO}\n' >> Dockerfile
@@ -60,8 +68,8 @@ jobs:
           context: ./ingest
           push: ${{ (github.ref == 'refs/heads/master') || (contains(github.ref, 'refs/tags/') == true) }}
           tags: |
-            ${{ steps.prepare.outputs.docker_image }}:latest
-            ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}
+            ${{ steps.prepare.outputs.docker_image }}:latest${{ matrix.suffix }}
+            ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}${{ matrix.suffix }}
           build-args: GIT_REPO=${{ steps.prepare.outputs.git_repo }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
