@@ -1,3 +1,11 @@
+> **Warning**
+> 
+> The FTL protocol is deprecated and [going to be removed from OBS in the future](https://github.com/obsproject/obs-studio/discussions/4021), in favour of WebRTC output. As such, this FTL-based version of Frameshift is also deprecated and no more updates will be made, and no support will be given.
+>
+> The WebRTC successor to Frameshift will not be released under an open-source model.
+
+---
+
 # 🚀 Frameshift
 > Ingest and Viewing stack for deploying Mixer's FTL streaming protocol.
 
